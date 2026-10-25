@@ -1,0 +1,309 @@
+msgid "action_failed"
+msgstr "Action failed"
+
+msgid "alarm_code_required"
+msgstr "Code required: use the phone app"
+
+msgid "areas"
+msgstr "Areas"
+
+msgid "arm_away"
+msgstr "Arm away"
+
+msgid "arm_home"
+msgstr "Arm home"
+
+msgid "battery"
+msgstr "Battery"
+
+msgid "camera_disabled"
+msgstr "Camera snapshots are disabled in this build"
+
+msgid "camera_no_file"
+msgstr "No image arrived from Home Assistant"
+
+msgid "camera_refresh"
+msgstr "Refresh"
+
+msgid "close"
+msgstr "Close"
+
+msgid "current"
+msgstr "Current"
+
+msgid "devices"
+msgstr "Devices"
+
+msgid "disarm"
+msgstr "Disarm"
+
+msgid "dock"
+msgstr "Dock"
+
+msgid "done"
+msgstr "Done"
+
+msgid "effect"
+msgstr "Effect"
+
+msgid "electricity"
+msgstr "Electricity"
+
+msgid "energy"
+msgstr "Energy"
+
+msgid "entities"
+msgstr "entities"
+
+msgid "error"
+msgstr "Something went wrong"
+
+msgid "favorites"
+msgstr "Favorites"
+
+msgid "gas"
+msgstr "Gas"
+
+msgid "loading"
+msgstr "Loading..."
+
+msgid "locate"
+msgstr "Locate"
+
+msgid "lock_action"
+msgstr "Lock"
+
+msgid "next"
+msgstr "Next"
+
+msgid "no_areas"
+msgstr "No areas"
+
+msgid "no_entities"
+msgstr "No entities"
+
+msgid "open"
+msgstr "Open"
+
+msgid "oscillate"
+msgstr "Oscillate"
+
+msgid "pause"
+msgstr "Pause"
+
+msgid "play"
+msgstr "Play"
+
+msgid "power"
+msgstr "On/Off"
+
+msgid "prev"
+msgstr "Prev"
+
+msgid "saa_not_configured"
+msgstr "Set the Sleep as Android notify service in the phone app settings."
+
+msgid "scripts"
+msgstr "Scripts"
+
+msgid "sensors"
+msgstr "Sensors"
+
+msgid "sleep_as_android"
+msgstr "Sleep as Android"
+
+msgid "start"
+msgstr "Start"
+
+msgid "start_tracking"
+msgstr "Start tracking"
+
+msgid "state_armed_away"
+msgstr "Armed away"
+
+msgid "state_armed_home"
+msgstr "Armed home"
+
+msgid "state_arming"
+msgstr "Arming"
+
+msgid "state_auto"
+msgstr "Auto"
+
+msgid "state_cleaning"
+msgstr "Cleaning"
+
+msgid "state_closed"
+msgstr "Closed"
+
+msgid "state_closing"
+msgstr "Closing"
+
+msgid "state_cool"
+msgstr "Cool"
+
+msgid "state_disarmed"
+msgstr "Disarmed"
+
+msgid "state_disarming"
+msgstr "Disarming"
+
+msgid "state_docked"
+msgstr "Docked"
+
+msgid "state_dry"
+msgstr "Dry"
+
+msgid "state_error"
+msgstr "Error"
+
+msgid "state_fan_only"
+msgstr "Fan"
+
+msgid "state_heat"
+msgstr "Heat"
+
+msgid "state_heat_cool"
+msgstr "Heat/cool"
+
+msgid "state_home"
+msgstr "Home"
+
+msgid "state_idle"
+msgstr "Idle"
+
+msgid "state_jammed"
+msgstr "Jammed"
+
+msgid "state_locked"
+msgstr "Locked"
+
+msgid "state_locking"
+msgstr "Locking"
+
+msgid "state_not_home"
+msgstr "Away"
+
+msgid "state_off"
+msgstr "Off"
+
+msgid "state_on"
+msgstr "On"
+
+msgid "state_open"
+msgstr "Open"
+
+msgid "state_opening"
+msgstr "Opening"
+
+msgid "state_paused"
+msgstr "Paused"
+
+msgid "state_pending"
+msgstr "Pending"
+
+msgid "state_playing"
+msgstr "Playing"
+
+msgid "state_returning"
+msgstr "Returning"
+
+msgid "state_triggered"
+msgstr "Triggered"
+
+msgid "state_unavailable"
+msgstr "Unavailable"
+
+msgid "state_unknown"
+msgstr "Unknown"
+
+msgid "state_unlocked"
+msgstr "Unlocked"
+
+msgid "state_unlocking"
+msgstr "Unlocking"
+
+msgid "stop"
+msgstr "Stop"
+
+msgid "stop_tracking"
+msgstr "Stop tracking"
+
+msgid "sync"
+msgstr "Sync"
+
+msgid "sync_auto_off"
+msgstr "Auto sync: off"
+
+msgid "sync_auto_on"
+msgstr "Auto sync: on"
+
+msgid "sync_done"
+msgstr "Synced"
+
+msgid "sync_error"
+msgstr "Error"
+
+msgid "sync_failed"
+msgstr "Sync failed"
+
+msgid "sync_failing_body"
+msgstr "3 syncs in a row failed. Check the phone connection."
+
+msgid "sync_failing_title"
+msgstr "Sync failing"
+
+msgid "sync_last"
+msgstr "Last sync"
+
+msgid "sync_mode"
+msgstr "Mode"
+
+msgid "sync_mode_mobile_app"
+msgstr "Mobile app"
+
+msgid "sync_mode_none"
+msgstr "Off"
+
+msgid "sync_mode_rest"
+msgstr "REST"
+
+msgid "sync_mode_unknown"
+msgstr "Unknown"
+
+msgid "sync_mode_zepp2hass"
+msgstr "zepp2hass"
+
+msgid "sync_never"
+msgstr "Never"
+
+msgid "sync_now"
+msgstr "Sync now"
+
+msgid "sync_ok"
+msgstr "OK"
+
+msgid "sync_start"
+msgstr "Start auto sync"
+
+msgid "sync_started"
+msgstr "Auto sync on"
+
+msgid "sync_stop"
+msgstr "Stop auto sync"
+
+msgid "sync_stopped"
+msgstr "Auto sync off"
+
+msgid "sync_title"
+msgstr "Sync"
+
+msgid "tap_again_to_confirm"
+msgstr "Tap again to confirm"
+
+msgid "unlock_action"
+msgstr "Unlock"
+
+msgid "water"
+msgstr "Water"
+

@@ -1,0 +1,28 @@
+{
+  "sync_title": { "en-US": "Sync", "pt-BR": "Sincronização", "es-ES": "Sincronización" },
+  "sync_last": { "en-US": "Last sync", "pt-BR": "Última sincronização", "es-ES": "Última sincronización" },
+  "sync_never": { "en-US": "Never", "pt-BR": "Nunca", "es-ES": "Nunca" },
+  "sync_ok": { "en-US": "OK", "pt-BR": "OK", "es-ES": "OK" },
+  "sync_error": { "en-US": "Error", "pt-BR": "Erro", "es-ES": "Error" },
+  "sync_mode": { "en-US": "Mode", "pt-BR": "Modo", "es-ES": "Modo" },
+  "sync_mode_none": { "en-US": "Off", "pt-BR": "Desligado", "es-ES": "Desactivado" },
+  "sync_mode_zepp2hass": { "en-US": "zepp2hass", "pt-BR": "zepp2hass", "es-ES": "zepp2hass" },
+  "sync_mode_mobile_app": { "en-US": "Mobile app", "pt-BR": "App mobile", "es-ES": "App móvil" },
+  "sync_mode_rest": { "en-US": "REST", "pt-BR": "REST", "es-ES": "REST" },
+  "sync_mode_unknown": { "en-US": "Unknown", "pt-BR": "Desconhecido", "es-ES": "Desconocido" },
+  "sync_now": { "en-US": "Sync now", "pt-BR": "Sincronizar agora", "es-ES": "Sincronizar ahora" },
+  "sync_start": { "en-US": "Start auto sync", "pt-BR": "Iniciar sync automático", "es-ES": "Iniciar sync automática" },
+  "sync_stop": { "en-US": "Stop auto sync", "pt-BR": "Parar sync automático", "es-ES": "Detener sync automática" },
+  "sync_auto_on": { "en-US": "Auto sync: on", "pt-BR": "Sync automático: ativo", "es-ES": "Sync automática: activa" },
+  "sync_auto_off": { "en-US": "Auto sync: off", "pt-BR": "Sync automático: desativado", "es-ES": "Sync automática: desactivada" },
+  "sync_done": { "en-US": "Synced", "pt-BR": "Sincronizado", "es-ES": "Sincronizado" },
+  "sync_failed": { "en-US": "Sync failed", "pt-BR": "Falha na sincronização", "es-ES": "Error de sincronización" },
+  "sync_started": { "en-US": "Auto sync on", "pt-BR": "Sync automático ativo", "es-ES": "Sync automática activa" },
+  "sync_stopped": { "en-US": "Auto sync off", "pt-BR": "Sync automático desativado", "es-ES": "Sync automática desactivada" },
+  "sync_failing_title": { "en-US": "Sync failing", "pt-BR": "Sincronização falhando", "es-ES": "Sincronización fallando" },
+  "sync_failing_body": {
+    "en-US": "3 syncs in a row failed. Check the phone connection.",
+    "pt-BR": "3 sincronizações seguidas falharam. Verifique a conexão com o celular.",
+    "es-ES": "3 sincronizaciones seguidas fallaron. Revisa la conexión con el teléfono."
+  }
+}

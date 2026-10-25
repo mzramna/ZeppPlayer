@@ -1,0 +1,35 @@
+msgid "Search"
+msgstr "検索"
+
+msgid "Access"
+msgstr "Home Assistantへのアクセス"
+
+msgid "IPLocal"
+msgstr "あなたのHAインスタンスのローカルアドレス"
+
+msgid "IPExternal"
+msgstr "あなたのHAインスタンスの外部アドレス"
+
+msgid "LongToken"
+msgstr "長期トークン"
+
+msgid "FromProfile"
+msgstr "あなたのHAプロフィールから作成"
+
+msgid "UpdateSensor"
+msgstr "1時間ごとにHAのセンサーを更新（ベータ版）"
+
+msgid "WorksBetter"
+msgstr "すべての通知を無効にすると、動作が向上します"
+
+msgid "Entities"
+msgstr "エンティティ"
+
+msgid "SearchEntities"
+msgstr "コントロールしたいエンティティを検索"
+
+msgid "SearchEntitiesEG"
+msgstr "エンティティのID（例：light.bulb）、ドメイン（例：light）を検索するか、空白のままにしてすべてのコントロール可能なエンティティ（メディアプレーヤー、ライト、スイッチ、input_boolean、スクリプト、自動化、バイナリセンサー）を表示します"
+
+msgid "Top"
+msgstr "トップ"

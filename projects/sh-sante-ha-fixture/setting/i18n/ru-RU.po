@@ -1,0 +1,35 @@
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Access"
+msgstr "Доступ к Home Assistant"
+
+msgid "IPLocal"
+msgstr "Локальный адрес вашего экземпляра HA"
+
+msgid "IPExternal"
+msgstr "Внешний адрес вашего экземпляра HA"
+
+msgid "LongToken"
+msgstr "Долгосрочный токен"
+
+msgid "FromProfile"
+msgstr "Создайте его из своего профиля HA"
+
+msgid "UpdateSensor"
+msgstr "Обновить датчики на HA каждый час (BETA)"
+
+msgid "WorksBetter"
+msgstr "Работает лучше, если отключить все уведомления"
+
+msgid "Entities"
+msgstr "Сущности"
+
+msgid "SearchEntities"
+msgstr "Поиск сущностей, которые вы хотите контролировать"
+
+msgid "SearchEntitiesEG"
+msgstr "Вы можете искать ID сущности (например, light.bulb), домен (например, light) или оставить его пустым, чтобы показать все ваши управляемые сущности (медиаплеер, свет, выключатель, input_boolean, скрипт, автоматизация и бинарный датчик)"
+
+msgid "Top"
+msgstr "Вверх"

@@ -1,8 +1,16 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineSuite } from '../../src/test-runner.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LOCAL_PATH = '/media/mzramna/dados/UserFolders/Documentos/sh-sante-ha-zepp';
+const FIXTURE_PATH = path.resolve(__dirname, '../../projects/sh-sante-ha-fixture');
+const projectPath = fs.existsSync(LOCAL_PATH) ? LOCAL_PATH : FIXTURE_PATH;
 
 export default defineSuite({
   name: 'Home Assistant Companion E2E',
-  projectPath: '/media/mzramna/dados/UserFolders/Documentos/sh-sante-ha-zepp',
+  projectPath,
   matrix: ['amazfit-balance', 'amazfit-active', 'amazfit-gtr-4'],
   async fn({ session, device, apiLevel, expect }) {
     // 1. Verify Home Page Route & Title

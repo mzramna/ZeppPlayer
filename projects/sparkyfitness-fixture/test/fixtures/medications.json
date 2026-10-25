@@ -1,0 +1,5 @@
+[{ "id": "m1", "name": "Dipirona", "dose_amount": 500, "dose_unit": "mg", "is_active": true,
+   "schedules": [
+     { "id": "s1", "medication_id": "m1", "schedule_type_id": "daily", "time_of_day": "08:00:00", "dose_amount": null, "active": true },
+     { "id": "s2", "medication_id": "m1", "schedule_type_id": "daily", "time_of_day": "20:00:00", "dose_amount": 250, "active": true } ] },
+ { "id": "m2", "name": "Vitamina", "dose_amount": 1, "dose_unit": "cp", "is_active": true, "schedules": [] }]

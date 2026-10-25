@@ -1,0 +1,10 @@
+{
+  "sleep_as_android": { "en-US": "Sleep as Android", "pt-BR": "Sleep as Android", "es-ES": "Sleep as Android" },
+  "saa_not_configured": {
+    "en-US": "Set the Sleep as Android notify service in the phone app settings.",
+    "pt-BR": "Defina o serviço de notificação do Sleep as Android nas configurações do app no celular.",
+    "es-ES": "Define el servicio de notificación de Sleep as Android en los ajustes de la app del teléfono."
+  },
+  "start_tracking": { "en-US": "Start tracking", "pt-BR": "Iniciar monitoramento", "es-ES": "Iniciar seguimiento" },
+  "stop_tracking": { "en-US": "Stop tracking", "pt-BR": "Parar monitoramento", "es-ES": "Detener seguimiento" }
+}

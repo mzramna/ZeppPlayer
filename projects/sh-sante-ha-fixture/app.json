@@ -1,0 +1,98 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 391257,
+    "appName": "Home Assistant",
+    "appType": "app",
+    "version": {
+      "code": 3,
+      "name": "2.0.0"
+    },
+    "icon": "icon.png",
+    "vender": "zepp",
+    "description": "Home Assistant companion"
+  },
+  "permissions": [
+    "data:os.device.info",
+    "device:os.local_storage",
+    "device:os.ble",
+    "device:os.alarm",
+    "device:os.bg_service",
+    "device:os.notification",
+    "data:user.info",
+    "data:user.hd.heart_rate",
+    "data:user.hd.sleep",
+    "data:user.hd.spo2",
+    "data:user.hd.stress",
+    "data:user.hd.body_temp",
+    "data:user.hd.step",
+    "data:user.hd.calorie",
+    "data:user.hd.distance",
+    "data:user.hd.pai",
+    "data:user.hd.stand",
+    "data:user.hd.fat_burning"
+  ],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "3.6",
+      "target": "4.0",
+      "minVersion": "3.6"
+    }
+  },
+  "debug": false,
+  "targets": {
+    "common": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/home/index",
+            "page/entities/index",
+            "page/areas/index",
+            "page/energy/index",
+            "page/light/index",
+            "page/light/effect",
+            "page/media_player/index",
+            "page/climate/index",
+            "page/cover/index",
+            "page/fan/index",
+            "page/lock/index",
+            "page/vacuum/index",
+            "page/alarm/index",
+            "page/camera/index",
+            "page/sleep/index",
+            "page/sync/index"
+          ]
+        },
+        "app-service": {
+          "services": [
+            "app-service/sync"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      },
+      "platforms": [
+        {
+          "st": "r",
+          "dw": 480
+        }
+      ]
+    }
+  },
+  "i18n": {
+    "en-US": {
+      "appName": "Home Assistant"
+    },
+    "pt-BR": {
+      "appName": "Home Assistant"
+    },
+    "es-ES": {
+      "appName": "Home Assistant"
+    }
+  },
+  "defaultLanguage": "en-US"
+}

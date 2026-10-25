@@ -1,0 +1,35 @@
+msgid "Search"
+msgstr "Cerca"
+
+msgid "Access"
+msgstr "Accés a Home Assistant"
+
+msgid "IPLocal"
+msgstr "Adreça local de la teva instància de HA"
+
+msgid "IPExternal"
+msgstr "Adreça externa de la teva instància de HA"
+
+msgid "LongToken"
+msgstr "Token de llarga durada"
+
+msgid "FromProfile"
+msgstr "Crea'l des del teu perfil de HA"
+
+msgid "UpdateSensor"
+msgstr "Actualitza sensors a HA cada hora (BETA)"
+
+msgid "WorksBetter"
+msgstr "Funciona millor si desactives totes les notificacions"
+
+msgid "Entities"
+msgstr "Entitats"
+
+msgid "SearchEntities"
+msgstr "Cerca les entitats que vols controlar"
+
+msgid "SearchEntitiesEG"
+msgstr "Pots buscar l'ID de l'entitat (p. ex., light.bulb), el domini (p. ex., light), o deixar-ho buit per mostrar totes les teves entitats controlables (reproductor multimèdia, llum, interruptor, input_boolean, script, automatització i sensor binari)"
+
+msgid "Top"
+msgstr "Pujar"

@@ -1,0 +1,181 @@
+msgid "Access"
+msgstr "Home Assistant Access"
+
+msgid "IPLocal"
+msgstr "Local HA instance address"
+
+msgid "IPExternal"
+msgstr "External HA instance address"
+
+msgid "LongToken"
+msgstr "Long access token"
+
+msgid "FromProfile"
+msgstr "Create it from your profile in HA"
+
+msgid "Entities"
+msgstr "Entities"
+
+msgid "SearchEntities"
+msgstr "Search for the entities you want on the watch"
+
+msgid "Top"
+msgstr "Top"
+
+msgid "Favorite"
+msgstr "Favorite"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Refresh entities"
+msgstr "Refresh entities"
+
+msgid "Loads your entities from Home Assistant. Your choices are kept."
+msgstr "Loads your entities from Home Assistant. Your choices are kept."
+
+msgid "Tap Refresh entities to load them from Home Assistant."
+msgstr "Tap Refresh entities to load them from Home Assistant."
+
+msgid "No entity matches the filter."
+msgstr "No entity matches the filter."
+
+msgid "Health data sync"
+msgstr "Health data sync"
+
+msgid "Send health data to"
+msgstr "Send health data to"
+
+msgid "Off"
+msgstr "Off"
+
+msgid "zepp2hass"
+msgstr "zepp2hass"
+
+msgid "Mobile app"
+msgstr "Mobile app"
+
+msgid "REST API"
+msgstr "REST API"
+
+msgid "Sync every"
+msgstr "Sync every"
+
+msgid "zepp2hass webhook URL"
+msgstr "zepp2hass webhook URL"
+
+msgid "Must start with http:// or https://"
+msgstr "Must start with http:// or https://"
+
+msgid "Register in Home Assistant"
+msgstr "Register in Home Assistant"
+
+msgid "Registered in Home Assistant"
+msgstr "Registered in Home Assistant"
+
+msgid "Not registered yet"
+msgstr "Not registered yet"
+
+msgid "No sync yet"
+msgstr "No sync yet"
+
+msgid "Last sync"
+msgstr "Last sync"
+
+msgid "Last sync failed"
+msgstr "Last sync failed"
+
+msgid "Sleep as Android"
+msgstr "Sleep as Android"
+
+msgid "Needs the Home Assistant Companion app on the phone and the sleep_as_android integration."
+msgstr "Needs the Home Assistant Companion app on the phone and the sleep_as_android integration."
+
+msgid "Notify service"
+msgstr "Notify service"
+
+msgid "Letters, digits and _ only, e.g. mobile_app_pixel_8"
+msgstr "Letters, digits and _ only, e.g. mobile_app_pixel_8"
+
+msgid "Status entity"
+msgstr "Status entity"
+
+msgid "Entity id like sensor.sleep_as_android, or empty"
+msgstr "Entity id like sensor.sleep_as_android, or empty"
+
+msgid "Favorites"
+msgstr "Favorite devices (Quick access)"
+
+msgid "QuickAccessHint"
+msgstr "Devices shown directly on the watch home screen for quick control."
+
+msgid "NoFavoritesHint"
+msgstr "Mark ★ Favorite on entities below to pin them to quick access."
+
+msgid "Remove"
+msgstr "Remove"
+
+msgid "Show only favorites"
+msgstr "Show only favorites"
+
+msgid "Prev"
+msgstr "Prev"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Theme"
+msgstr "UI Theme"
+
+msgid "Dark"
+msgstr "Dark"
+
+msgid "Light"
+msgstr "Light"
+
+msgid "Areas"
+msgstr "Areas"
+
+msgid "Energy"
+msgstr "Energy"
+
+msgid "Interactive"
+msgstr "Interactive"
+
+msgid "Sensors"
+msgstr "Sensors"
+
+msgid "All"
+msgstr "All"
+
+msgid "Filter type"
+msgstr "Filter type"
+
+msgid "Electricity"
+msgstr "Electricity"
+
+msgid "Water"
+msgstr "Water"
+
+msgid "Gas"
+msgstr "Gas"
+
+msgid "Other"
+msgstr "Other"
+
+msgid "No areas found. Tap Refresh entities to load them."
+msgstr "No areas found. Tap Refresh entities to load them."
+
+msgid "No energy sensors found. Tap Refresh entities to load them."
+msgstr "No energy sensors found. Tap Refresh entities to load them."
+
+msgid "No Area"
+msgstr "No Area"
+
+msgid "Grouped by area from Home Assistant"
+msgstr "Grouped by area from Home Assistant"
+
+msgid "Energy and resource sensors"
+msgstr "Energy and resource sensors"
+
+

@@ -1,0 +1,24 @@
+{
+  "name": "sparkyfitness-zeppos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "App Zepp OS para SparkyFitness",
+  "scripts": {
+    "dev": "zeus dev",
+    "build": "node scripts/build.js",
+    "build:all": "node scripts/build.js --api all",
+    "verify": "node scripts/build.js --api all --verify",
+    "preview": "zeus preview",
+    "test": "node scripts/test.mjs"
+  },
+  "dependencies": {
+    "@zeppos/zml": "^0.0.27"
+  },
+  "devDependencies": {
+    "@zeppos/device-types": "^3.0.0",
+    "esbuild": "^0.24.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

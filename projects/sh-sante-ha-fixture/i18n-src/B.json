@@ -1,0 +1,13 @@
+{
+  "loading": { "en-US": "Loading...", "pt-BR": "Carregando...", "es-ES": "Cargando..." },
+  "state_on": { "en-US": "On", "pt-BR": "Ligado", "es-ES": "Encendido" },
+  "state_off": { "en-US": "Off", "pt-BR": "Desligado", "es-ES": "Apagado" },
+  "state_unavailable": { "en-US": "Unavailable", "pt-BR": "Indisponível", "es-ES": "No disponible" },
+  "error": { "en-US": "Something went wrong", "pt-BR": "Algo deu errado", "es-ES": "Algo salió mal" },
+  "effect": { "en-US": "Effect", "pt-BR": "Efeito", "es-ES": "Efecto" },
+  "prev": { "en-US": "Prev", "pt-BR": "Ant.", "es-ES": "Ant." },
+  "next": { "en-US": "Next", "pt-BR": "Próx.", "es-ES": "Sig." },
+  "play": { "en-US": "Play", "pt-BR": "Tocar", "es-ES": "Reproducir" },
+  "pause": { "en-US": "Pause", "pt-BR": "Pausar", "es-ES": "Pausa" },
+  "power": { "en-US": "On/Off", "pt-BR": "Liga/Desl.", "es-ES": "On/Off" }
+}

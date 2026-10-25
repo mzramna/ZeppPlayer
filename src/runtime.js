@@ -32,6 +32,8 @@ export class ZeppRuntimeEngine {
     this._visitedRoutes = new Set();
     this._interactedWidgets = [];
     this._activeTimers = new Set();
+    this._crownListeners = new Set();
+    this._gestureListeners = new Set();
 
     this._pageDefinition = null;
     this._appDefinition = null;

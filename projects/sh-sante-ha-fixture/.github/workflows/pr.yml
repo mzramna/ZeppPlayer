@@ -1,0 +1,94 @@
+name: PR checks
+
+# Runs when a pull request is opened or updated. Mark the jobs below as required
+# status checks in the branch protection rule of `main` so a PR cannot be merged
+# while any of them fails (see README, "Pull request checks").
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# pull_request (not pull_request_target): fork PRs run without secrets or write access.
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: verify
+    runs-on: ubuntu-24.04
+    outputs:
+      apis: ${{ steps.profiles.outputs.apis }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # setup-node's npm cache needs a committed lockfile; package-lock.json is gitignored.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('package.json') }}
+
+      - run: npm install
+
+      - name: Tests with coverage thresholds
+        run: npm run test:coverage
+
+      - name: Type check
+        run: npm run check
+
+      - name: Watch translations are up to date with i18n-src
+        run: |
+          npm run i18n
+          git diff --exit-code -- page/i18n || { echo "::error::page/i18n/*.po is stale: run 'npm run i18n' and commit the result"; exit 1; }
+
+      # Preliminary pre-compilation: stages every API profile and checks that all
+      # pages, services, icons and translations app.json points to are present.
+      - name: Pre-compilation check (all API profiles)
+        run: npm run verify
+
+      # One precompile job per API profile in build.config.js (a new profile gets its own build).
+      - name: API profiles
+        id: profiles
+        run: echo "apis=$(node scripts/build.js --list)" >> "$GITHUB_OUTPUT"
+
+  precompile:
+    name: precompile (API ${{ matrix.api }})
+    needs: verify
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        api: ${{ fromJSON(needs.verify.outputs.apis) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('package.json') }}
+
+      - run: npm install
+
+      # zeus-cli breaks as a project dependency (module-alias), so it is installed globally.
+      - run: npm install -g @zeppos/zeus-cli@1.9.3
+
+      # Real zeus build. zeus downloads the device list from Zepp's servers.
+      - name: zeus build
+        run: node scripts/build.js --api ${{ matrix.api }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ha-zepp-api${{ matrix.api }}
+          path: dist/ha-zepp-api${{ matrix.api }}.zab
+          if-no-files-found: error
+          retention-days: 14

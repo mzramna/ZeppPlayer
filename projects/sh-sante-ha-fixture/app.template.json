@@ -1,0 +1,62 @@
+{
+  "configVersion": "__CONFIG_VERSION__",
+  "app": {
+    "appId": 391257,
+    "appName": "Home Assistant",
+    "appType": "app",
+    "version": {
+      "code": 3,
+      "name": "2.0.0"
+    },
+    "icon": "icon.png",
+    "vender": "zepp",
+    "description": "Home Assistant companion"
+  },
+  "permissions": "__PERMISSIONS__",
+  "runtime": {
+    "apiVersion": "__API_VERSION__"
+  },
+  "debug": "__DEBUG__",
+  "targets": {
+    "common": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/home/index",
+            "page/entities/index",
+            "page/areas/index",
+            "page/energy/index",
+            "page/light/index",
+            "page/light/effect",
+            "page/media_player/index",
+            "page/climate/index",
+            "page/cover/index",
+            "page/fan/index",
+            "page/lock/index",
+            "page/vacuum/index",
+            "page/alarm/index",
+            "page/camera/index",
+            "page/sleep/index",
+            "page/sync/index"
+          ]
+        },
+        "app-service": {
+          "services": ["app-service/sync"]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      },
+      "platforms": "__PLATFORMS__"
+    }
+  },
+  "i18n": {
+    "en-US": { "appName": "Home Assistant" },
+    "pt-BR": { "appName": "Home Assistant" },
+    "es-ES": { "appName": "Home Assistant" }
+  },
+  "defaultLanguage": "en-US"
+}

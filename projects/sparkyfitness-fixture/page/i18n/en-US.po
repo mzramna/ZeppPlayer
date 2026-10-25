@@ -1,0 +1,158 @@
+msgid "dash.active"
+msgstr "Active"
+
+msgid "dash.burned"
+msgstr "Burned"
+
+msgid "dash.carbs"
+msgstr "Carbs"
+
+msgid "dash.cycle"
+msgstr "Cycle"
+
+msgid "dash.disconnected"
+msgstr "Phone disconnected"
+
+msgid "dash.eaten"
+msgstr "Eaten"
+
+msgid "dash.error"
+msgstr "Error"
+
+msgid "dash.fasting"
+msgstr "Fasting"
+
+msgid "dash.fat"
+msgstr "Fat"
+
+msgid "dash.fiber"
+msgstr "Fiber"
+
+msgid "dash.food"
+msgstr "Food"
+
+msgid "dash.meds"
+msgstr "Meds"
+
+msgid "dash.mood"
+msgstr "Mood"
+
+msgid "dash.noDoses"
+msgstr "no doses"
+
+msgid "dash.over"
+msgstr "Over goal"
+
+msgid "dash.protein"
+msgstr "Protein"
+
+msgid "dash.remaining"
+msgstr "Remaining"
+
+msgid "dash.sent"
+msgstr "sent"
+
+msgid "dash.symptom"
+msgstr "Symptoms"
+
+msgid "dash.sync"
+msgstr "Sync"
+
+msgid "dash.syncToDownload"
+msgstr "Sync to download your data"
+
+msgid "dash.syncing"
+msgstr "Syncing..."
+
+msgid "dash.water"
+msgstr "Water"
+
+msgid "fast.end"
+msgstr "End fast"
+
+msgid "fast.noPrefs"
+msgstr "No protocol configured"
+
+msgid "fast.protocol"
+msgstr "Protocol"
+
+msgid "fast.remaining"
+msgstr "Remaining"
+
+msgid "fast.start"
+msgstr "Start fast"
+
+msgid "flow.heavy"
+msgstr "Heavy"
+
+msgid "flow.light"
+msgstr "Light"
+
+msgid "flow.medium"
+msgstr "Medium"
+
+msgid "flow.none"
+msgstr "None"
+
+msgid "flow.spotting"
+msgstr "Spotting"
+
+msgid "list.cycle"
+msgstr "Cycle"
+
+msgid "list.dose"
+msgstr "Dose"
+
+msgid "list.empty"
+msgstr "Nothing set up on your instance"
+
+msgid "list.food"
+msgstr "Food"
+
+msgid "list.meal"
+msgstr "Meal"
+
+msgid "list.meds"
+msgstr "Medications"
+
+msgid "list.mood"
+msgstr "Mood"
+
+msgid "list.prn"
+msgstr "As needed"
+
+msgid "list.registered"
+msgstr "Logged"
+
+msgid "list.skipped"
+msgstr "Skipped"
+
+msgid "list.symptom"
+msgstr "Symptoms"
+
+msgid "list.taken"
+msgstr "Taken"
+
+msgid "list.water"
+msgstr "Water"
+
+msgid "mood.1"
+msgstr "Very bad"
+
+msgid "mood.2"
+msgstr "Bad"
+
+msgid "mood.3"
+msgstr "Okay"
+
+msgid "mood.4"
+msgstr "Good"
+
+msgid "mood.5"
+msgstr "Great"
+
+msgid "skip"
+msgstr "Skip"
+
+msgid "taken"
+msgstr "Taken"

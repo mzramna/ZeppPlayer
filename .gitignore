@@ -19,6 +19,8 @@ __pycache__
 .~lock*
 
 !/projects/demo
+!/projects/sparkyfitness-fixture
+!/projects/sh-sante-ha-fixture
 /projects/demo/*.png
 /projects/demo/widgets.json
 !.empty

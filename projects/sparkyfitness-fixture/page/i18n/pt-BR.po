@@ -1,0 +1,158 @@
+msgid "dash.active"
+msgstr "Em andamento"
+
+msgid "dash.burned"
+msgstr "Queimadas"
+
+msgid "dash.carbs"
+msgstr "Carboidratos"
+
+msgid "dash.cycle"
+msgstr "Ciclo"
+
+msgid "dash.disconnected"
+msgstr "Celular desconectado"
+
+msgid "dash.eaten"
+msgstr "Consumidas"
+
+msgid "dash.error"
+msgstr "Erro"
+
+msgid "dash.fasting"
+msgstr "Jejum"
+
+msgid "dash.fat"
+msgstr "Gordura"
+
+msgid "dash.fiber"
+msgstr "Fibra"
+
+msgid "dash.food"
+msgstr "Alimentação"
+
+msgid "dash.meds"
+msgstr "Remédios"
+
+msgid "dash.mood"
+msgstr "Humor"
+
+msgid "dash.noDoses"
+msgstr "sem doses"
+
+msgid "dash.over"
+msgstr "Acima da meta"
+
+msgid "dash.protein"
+msgstr "Proteína"
+
+msgid "dash.remaining"
+msgstr "Restantes"
+
+msgid "dash.sent"
+msgstr "enviados"
+
+msgid "dash.symptom"
+msgstr "Sintomas"
+
+msgid "dash.sync"
+msgstr "Sincronizar"
+
+msgid "dash.syncToDownload"
+msgstr "Sincronize para baixar seus dados"
+
+msgid "dash.syncing"
+msgstr "Sincronizando..."
+
+msgid "dash.water"
+msgstr "Água"
+
+msgid "fast.end"
+msgstr "Encerrar jejum"
+
+msgid "fast.noPrefs"
+msgstr "Sem protocolo configurado"
+
+msgid "fast.protocol"
+msgstr "Protocolo"
+
+msgid "fast.remaining"
+msgstr "Restante"
+
+msgid "fast.start"
+msgstr "Iniciar jejum"
+
+msgid "flow.heavy"
+msgstr "Intenso"
+
+msgid "flow.light"
+msgstr "Leve"
+
+msgid "flow.medium"
+msgstr "Médio"
+
+msgid "flow.none"
+msgstr "Nenhum"
+
+msgid "flow.spotting"
+msgstr "Manchas"
+
+msgid "list.cycle"
+msgstr "Ciclo"
+
+msgid "list.dose"
+msgstr "Dose"
+
+msgid "list.empty"
+msgstr "Nada cadastrado na sua instância"
+
+msgid "list.food"
+msgstr "Alimentação"
+
+msgid "list.meal"
+msgstr "Refeição"
+
+msgid "list.meds"
+msgstr "Remédios"
+
+msgid "list.mood"
+msgstr "Humor"
+
+msgid "list.prn"
+msgstr "Avulso"
+
+msgid "list.registered"
+msgstr "Registrado"
+
+msgid "list.skipped"
+msgstr "Pulei"
+
+msgid "list.symptom"
+msgstr "Sintomas"
+
+msgid "list.taken"
+msgstr "Tomei"
+
+msgid "list.water"
+msgstr "Água"
+
+msgid "mood.1"
+msgstr "Muito ruim"
+
+msgid "mood.2"
+msgstr "Ruim"
+
+msgid "mood.3"
+msgstr "Ok"
+
+msgid "mood.4"
+msgstr "Bom"
+
+msgid "mood.5"
+msgstr "Ótimo"
+
+msgid "skip"
+msgstr "Pular"
+
+msgid "taken"
+msgstr "Tomei"

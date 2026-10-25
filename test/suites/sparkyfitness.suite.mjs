@@ -1,8 +1,16 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineSuite } from '../../src/test-runner.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LOCAL_PATH = '/home/mzramna/Documentos/sparkyfitness-zeppos';
+const FIXTURE_PATH = path.resolve(__dirname, '../../projects/sparkyfitness-fixture');
+const projectPath = fs.existsSync(LOCAL_PATH) ? LOCAL_PATH : FIXTURE_PATH;
 
 export default defineSuite({
   name: 'SparkyFitness ZeppOS E2E',
-  projectPath: '/home/mzramna/Documentos/sparkyfitness-zeppos',
+  projectPath,
   matrix: ['amazfit-balance', 'amazfit-active', 'mi-band-7'],
   async fn({ session, device, apiLevel, expect }) {
     // 1. Initial State Setup with Mock 'today' Data

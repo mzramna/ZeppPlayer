@@ -1,0 +1,76 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 1099001,
+    "appName": "SparkyFitness",
+    "appType": "app",
+    "version": {
+      "code": 1,
+      "name": "0.1.0"
+    },
+    "icon": "icon.png",
+    "vender": "mzramna",
+    "description": "Registro de água, remédios, ciclo e alimentação com sync para SparkyFitness"
+  },
+  "permissions": [
+    "data:os.device.info",
+    "device:os.local_storage",
+    "data:user.hd.step",
+    "data:user.hd.calorie",
+    "data:user.hd.heart_rate",
+    "data:user.hd.sleep",
+    "device:os.alarm",
+    "device:os.notification",
+    "device:os.bg_service"
+  ],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "3.0.0",
+      "target": "3.7.0",
+      "minVersion": "3.0.0"
+    }
+  },
+  "targets": {
+    "common": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/index",
+            "page/list",
+            "page/fasting"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        },
+        "app-service": {
+          "services": [
+            "app-service/med_reminder"
+          ]
+        }
+      },
+      "platforms": [
+        {
+          "st": "r",
+          "dw": 480
+        },
+        {
+          "st": "s",
+          "dw": 390
+        }
+      ]
+    }
+  },
+  "i18n": {
+    "pt-BR": {
+      "appName": "SparkyFitness"
+    },
+    "en-US": {
+      "appName": "SparkyFitness"
+    }
+  },
+  "defaultLanguage": "pt-BR"
+}
