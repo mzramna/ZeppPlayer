@@ -158,8 +158,10 @@ export class ZeppRuntimeEngine {
 
     this._recordApiCall('app.load');
 
-    // Read app.json config
-    const appJsonPath = path.join(this.projectPath, 'app.json');
+    // Read app.json or app.template.json config
+    const appJsonPath = fs.existsSync(path.join(this.projectPath, 'app.json'))
+      ? path.join(this.projectPath, 'app.json')
+      : path.join(this.projectPath, 'app.template.json');
     let appConfig = {};
     if (fs.existsSync(appJsonPath)) {
       try {
@@ -199,16 +201,24 @@ export class ZeppRuntimeEngine {
     // Determine initial route
     let initialRoute = params.route;
     if (!initialRoute) {
+      const firstTargetKey = appConfig.targets ? Object.keys(appConfig.targets)[0] : null;
+      const firstTargetPages = firstTargetKey ? appConfig.targets[firstTargetKey]?.module?.page?.pages : null;
       if (appConfig.app?.appType === 'watchface' && appConfig.module?.watchface?.path) {
         initialRoute = appConfig.module.watchface.path;
       } else if (appConfig.targets?.common?.module?.page?.pages?.[0]) {
         initialRoute = appConfig.targets.common.module.page.pages[0];
+      } else if (firstTargetPages?.[0]) {
+        initialRoute = firstTargetPages[0];
       } else if (appConfig.module?.page?.pages?.[0] && (fs.existsSync(path.join(this.projectPath, appConfig.module.page.pages[0] + '.js')) || fs.existsSync(path.join(this.projectPath, appConfig.module.page.pages[0], 'index.js')))) {
         initialRoute = appConfig.module.page.pages[0];
       } else if (appConfig.module?.watchface?.path) {
         initialRoute = appConfig.module.watchface.path;
       } else if (appConfig.module?.page?.pages?.[0]) {
         initialRoute = appConfig.module.page.pages[0];
+      } else if (fs.existsSync(path.join(this.projectPath, 'page', 'home', 'index.js'))) {
+        initialRoute = 'page/home/index';
+      } else if (fs.existsSync(path.join(this.projectPath, 'page', 'index.js'))) {
+        initialRoute = 'page/index';
       } else if (fs.existsSync(path.join(this.projectPath, 'watchface', 'index.js'))) {
         initialRoute = 'watchface/index';
       } else if (fs.existsSync(path.join(this.projectPath, 'pages', 'index.js'))) {

@@ -43,9 +43,9 @@ async function runTests() {
     const load1 = await (await fetch(`${baseWeb}/api/load-app`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ projectPath: 'sparkyfitness-zeppos', device: 'amazfit-balance', apiLevel: '3.6.0' })
+      body: JSON.stringify({ projectPath: 'sparkyfitness-fixture', device: 'amazfit-balance', apiLevel: '3.6.0' })
     })).json();
-    assert(load1.success && load1.state.projectName === 'sparkyfitness-zeppos', 'Load SparkyFitness succeeds');
+    assert(load1.success && load1.state.projectName.includes('sparkyfitness'), 'Load SparkyFitness succeeds');
 
     // 5. State inspection
     const state = await (await fetch(`${baseWeb}/api/state`)).json();

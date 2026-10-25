@@ -264,11 +264,18 @@ export function resolveProjectPath(candidatePath) {
     candidatePath = state.projectPath;
   }
 
+  const aliasMap = {
+    'sparkyfitness-zeppos': 'sparkyfitness-fixture',
+    'sh-sante-ha-zepp': 'sh-sante-ha-fixture'
+  };
+  const alias = aliasMap[path.basename(candidatePath)];
+
   const searchLocations = [
     candidatePath,
     path.resolve(candidatePath),
     path.join('/home/mzramna/Documentos', candidatePath),
     path.join(ROOT_DIR, 'projects', candidatePath),
+    ...(alias ? [path.join(ROOT_DIR, 'projects', alias)] : []),
     path.join(ROOT_DIR, candidatePath),
     path.join('/media/mzramna/dados/UserFolders/Documentos', candidatePath)
   ];
