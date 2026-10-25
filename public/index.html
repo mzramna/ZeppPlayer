@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zepp OS Emulator & Companion Studio</title>
+  <link rel="icon" href="/app/icon.png" type="image/png">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(22, 30, 46, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-amber: #f59e0b;
+      --accent-green: #10b981;
+      --accent-rose: #f43f5e;
+      --accent-pink: #ec4899;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dark: #64748b;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* =========================================================================
+       Top Header
+       ========================================================================= */
+    header {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+    }
+
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .brand-text p {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .control-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+
+    .control-item label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    select, input[type="text"] {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: rgba(51, 65, 85, 0.9);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      border: 1px solid #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    /* =========================================================================
+       Main Workspace (Side-by-side Layout)
+       ========================================================================= */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 20px;
+      padding: 20px 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* =========================================================================
+       Watch Simulator Column
+       ========================================================================= */
+    .watch-workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.3);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      padding: 20px;
+    }
+
+    .watch-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Realistic Watch Bezels */
+    .watch-bezel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111827;
+      transition: all 0.35s ease;
+    }
+
+    /* --- Round Bezel (Amazfit Balance, GTR 4) --- */
+    .bezel-round {
+      width: 530px;
+      height: 530px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        conic-gradient(from 0deg, #1e293b, #475569, #1e293b, #334155, #1e293b);
+      box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.85),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: 25px;
+    }
+
+    /* Notches on Round Bezel */
+    .bezel-round::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      pointer-events: none;
+    }
+
+    /* Hardware Crown Button (Rotatable / Clickable) */
+    .bezel-round .hardware-crown {
+      position: absolute;
+      top: 18%;
+      right: -16px;
+      width: 18px;
+      height: 54px;
+      background: linear-gradient(to right, #334155, #64748b, #334155);
+      border-radius: 4px 8px 8px 4px;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 3px 2px;
+      transition: transform 0.1s ease;
+      z-index: 10;
+    }
+
+    .bezel-round .hardware-crown:hover {
+      filter: brightness(1.2);
+    }
+
+    .bezel-round .hardware-crown:active {
+      transform: translateX(-4px) scale(0.97);
+    }
+
+    .crown-ridge {
+      height: 3px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 1px;
+    }
+
+    /* Secondary Hardware Button (Back) */
+    .bezel-round .hardware-btn-back {
+      position: absolute;
+      top: 68%;
+      right: -14px;
+      width: 14px;
+      height: 44px;
+      background: linear-gradient(to right, #1e293b, #475569);
+      border-radius: 3px 6px 6px 3px;
+      box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+      z-index: 10;
+    }
+
+    .bezel-round .hardware-btn-back:hover {
+      filter: brightness(1.2);
+    }
+
+    .bezel-round .hardware-btn-back:active {
+      transform: translateX(-3px);
+    }
+
+    /* --- Square Bezel (Amazfit Active, GTS 4 Mini) --- */
+    .bezel-square {
+      width: 440px;
+      height: 500px;
+      border-radius: 54px;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+        linear-gradient(145deg, #334155, #1e293b 50%, #0f172a);
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.85),
+        inset 0 2px 3px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+      padding: 24px;
+    }
+
+    .bezel-square .hardware-crown {
+      position: absolute;
+      top: 45%;
+      right: -13px;
+      width: 14px;
+      height: 48px;
+      background: linear-gradient(to right, #334155, #64748b);
+      border-radius: 3px 6px 6px 3px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .bezel-square .hardware-crown:active {
+      transform: translateX(-3px);
+    }
+
+    .bezel-square .hardware-btn-back {
+      display: none;
+    }
+
+    /* --- Band / Pill Bezel (Amazfit Band 7, Mi Band 7) --- */
+    .bezel-band {
+      width: 250px;
+      height: 470px;
+      border-radius: 125px;
+      background: 
+        linear-gradient(180deg, #334155 0%, #1e293b 25%, #0f172a 75%, #334155 100%);
+      box-shadow: 
+        0 25px 50px -10px rgba(0, 0, 0, 0.9),
+        inset 0 3px 6px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+      padding: 28px 26px;
+    }
+
+    .bezel-band .hardware-crown {
+      display: none;
+    }
+
+    .bezel-band .hardware-btn-back {
+      position: absolute;
+      bottom: 8px;
+      width: 40px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* Screen Viewport */
+    .watch-screen {
+      position: relative;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+      user-select: none;
+    }
+
+    .bezel-round .watch-screen {
+      border-radius: 50%;
+    }
+
+    .bezel-square .watch-screen {
+      border-radius: 34px;
+    }
+
+    .bezel-band .watch-screen {
+      border-radius: 95px;
+    }
+
+    #watchCanvas {
+      display: block;
+      cursor: default;
+    }
+
+    /* Toast Overlay on Watch */
+    .watch-toast {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      padding: 10px 18px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 50;
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .watch-toast.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Watch Info footer */
+    .watch-meta-bar {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .meta-tag {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* =========================================================================
+       Zepp Companion Phone App Column
+       ========================================================================= */
+    .phone-workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.3);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      padding: 20px 10px;
+      overflow: hidden;
+    }
+
+    .phone-bezel {
+      width: 340px;
+      height: 640px;
+      background: #1e293b;
+      border-radius: 46px;
+      padding: 12px;
+      box-shadow: 
+        0 25px 60px -15px rgba(0, 0, 0, 0.9),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dynamic Island */
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 22px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+    }
+
+    .phone-camera {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #111827;
+      border: 1px solid #1f2937;
+    }
+
+    .phone-screen {
+      flex: 1;
+      background: #0f172a;
+      border-radius: 36px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Phone Status Bar */
+    .phone-status-bar {
+      height: 38px;
+      padding: 0 22px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      color: #f8fafc;
+      padding-bottom: 4px;
+      z-index: 20;
+    }
+
+    .phone-icons {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+    }
+
+    /* Zepp App Navigation Bar */
+    .phone-app-header {
+      background: rgba(30, 41, 59, 0.95);
+      border-bottom: 1px solid var(--card-border);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phone-app-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phone-app-badge {
+      font-size: 9px;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* Phone Scroll Content (Settings UI) */
+    .phone-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .phone-content::-webkit-scrollbar {
+      width: 4px;
+    }
+    .phone-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    /* App Settings Cards */
+    .setting-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .setting-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .setting-card-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 15px;
+    }
+
+    .setting-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .setting-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .setting-input {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #fff;
+      font-size: 12px;
+      width: 100%;
+    }
+
+    .setting-input:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .setting-select {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #fff;
+      font-size: 12px;
+      width: 100%;
+    }
+
+    .setting-notice {
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      line-height: 15px;
+    }
+
+    .notice-info {
+      background: rgba(56, 189, 248, 0.12);
+      border-left: 3px solid var(--accent);
+      color: #e0f2fe;
+    }
+
+    .notice-warning {
+      background: rgba(245, 158, 11, 0.12);
+      border-left: 3px solid var(--accent-amber);
+      color: #fef3c7;
+    }
+
+    .phone-home-indicator {
+      width: 110px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 2px;
+      margin: 8px auto 4px auto;
+    }
+
+    /* =========================================================================
+       Bottom Drawers (Sensors & Console)
+       ========================================================================= */
+    .drawer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--card-border);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(100%);
+      max-height: 55vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.open {
+      transform: translateY(0);
+    }
+
+    .drawer-header {
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .drawer-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drawer-body {
+      padding: 18px 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Sensors Grid */
+    .sensors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .sensor-card {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sensor-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sensor-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sensor-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .sensor-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    /* Switch Component */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-toggle {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #334155;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider-toggle:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider-toggle {
+      background-color: var(--accent-green);
+    }
+
+    input:checked + .slider-toggle:before {
+      transform: translateX(20px);
+    }
+
+    .preset-btns {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Console Tabs & List */
+    .console-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .console-tab {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .console-tab.active {
+      background: var(--accent);
+      color: #090d16;
+    }
+
+    .console-logs {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 12px;
+      height: 220px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .log-line {
+      display: flex;
+      gap: 8px;
+      line-height: 18px;
+    }
+
+    .log-time { color: var(--text-dark); }
+    .log-src { font-weight: 700; width: 70px; }
+    .log-src.watch { color: var(--accent); }
+    .log-src.app-side { color: var(--accent-pink); }
+    .log-src.sensor { color: var(--accent-green); }
+    .log-src.zeus { color: var(--accent-amber); }
+    .log-src.server { color: #a855f7; }
+    .log-msg { color: #e2e8f0; word-break: break-all; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">
+        <h1>Zepp OS Visual Studio</h1>
+        <p><span class="status-dot"></span> Zeus Bridge Ativo :7650 • HTTP :7651</p>
+      </div>
+    </div>
+
+    <div class="controls-group">
+      <!-- Project Selector -->
+      <div class="control-item">
+        <label>Projeto</label>
+        <select id="projectSelect">
+          <option value="sparkyfitness-zeppos">sparkyfitness-zeppos</option>
+          <option value="sh-sante-ha-zepp">sh-sante-ha-zepp</option>
+          <option value="demo">demo (Watchface)</option>
+        </select>
+      </div>
+
+      <!-- Device Selector -->
+      <div class="control-item">
+        <label>Dispositivo</label>
+        <select id="deviceSelect">
+          <option value="amazfit-balance">Amazfit Balance [480x480 Round]</option>
+          <option value="amazfit-balance-2">Amazfit Balance 2 [480x480 Round]</option>
+          <option value="amazfit-active">Amazfit Active [390x450 Square]</option>
+          <option value="amazfit-gtr-4">Amazfit GTR 4 [466x466 Round]</option>
+          <option value="amazfit-gts-4-mini">Amazfit GTS 4 Mini [336x384 Square]</option>
+          <option value="amazfit-band-7">Amazfit Band 7 [194x368 Pill]</option>
+          <option value="mi-band-7">Mi Band 7 [192x490 Pill]</option>
+        </select>
+      </div>
+
+      <!-- Zepp OS API Level -->
+      <div class="control-item">
+        <label>Zepp OS</label>
+        <select id="apiLevelSelect">
+          <option value="3.0.0">API 3.0</option>
+          <option value="3.6.0">API 3.6 / 3.7</option>
+          <option value="4.0.0">API 4.0 / 4.2</option>
+          <option value="2.0.0">API 2.0</option>
+          <option value="1.0.0">API 1.0</option>
+        </select>
+      </div>
+
+      <!-- Run / Reload Button -->
+      <button class="btn btn-primary" id="btnReload">
+        <span>↻</span> Executar
+      </button>
+
+      <!-- Hardware Home & Back -->
+      <button class="btn" id="btnHome" title="Voltar ao início da aplicação">⌂ Início</button>
+      <button class="btn" id="btnBack" title="Simular botão físico voltar">◀ Voltar</button>
+
+      <!-- Drawer Toggles -->
+      <button class="btn" id="btnToggleSensors">📊 Sensores</button>
+      <button class="btn" id="btnToggleConsole">💻 Console</button>
+    </div>
+  </header>
+
+  <!-- Side-by-side Main Layout -->
+  <main>
+    <!-- Left / Center: Watch Simulator -->
+    <div class="watch-workspace">
+      <div class="watch-container" id="watchContainer">
+        <!-- Watch Bezel (adapts dynamically: .bezel-round, .bezel-square, .bezel-band) -->
+        <div class="watch-bezel bezel-round" id="watchBezel">
+          <!-- Physical Hardware Buttons -->
+          <div class="hardware-crown" id="hardwareCrown" title="Botão Crown (Girar / Pressionar)">
+            <div class="crown-ridge"></div>
+            <div class="crown-ridge"></div>
+            <div class="crown-ridge"></div>
+            <div class="crown-ridge"></div>
+          </div>
+          <div class="hardware-btn-back" id="hardwareBack" title="Botão Voltar"></div>
+
+          <!-- Watch Screen Viewport -->
+          <div class="watch-screen" id="watchScreen" style="width: 480px; height: 480px;">
+            <canvas id="watchCanvas" width="480" height="480"></canvas>
+            <div class="watch-toast" id="watchToast">Notificação Zepp OS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watch Status Footer -->
+      <div class="watch-meta-bar">
+        <span class="meta-tag" id="metaDevice">Amazfit Balance (480×480)</span>
+        <span class="meta-tag" id="metaRoute">Rota: page/index</span>
+        <span class="meta-tag" id="metaApi">Zepp OS 3.0</span>
+      </div>
+    </div>
+
+    <!-- Right: Zepp Companion Phone App Simulator -->
+    <div class="phone-workspace">
+      <div class="phone-bezel">
+        <div class="phone-notch">
+          <div class="phone-camera"></div>
+        </div>
+
+        <div class="phone-screen">
+          <!-- Status Bar -->
+          <div class="phone-status-bar">
+            <span id="phoneClock">17:45</span>
+            <div class="phone-icons">
+              <span>5G</span>
+              <span>📶</span>
+              <span>100% ⚡</span>
+            </div>
+          </div>
+
+          <!-- App Navigation Header -->
+          <div class="phone-app-header">
+            <div class="phone-app-title">
+              <span>⚡</span> <span id="phoneAppTitle">SparkyFitness</span>
+            </div>
+            <div class="phone-app-badge">BLE Pareado</div>
+          </div>
+
+          <!-- Phone Settings Page (AppSettingsPage DSL Render) -->
+          <div class="phone-content" id="phoneSettingsContent">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Bottom Home Indicator -->
+          <div class="phone-home-indicator"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Drawer: Sensor Data Editor -->
+  <div class="drawer" id="sensorsDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>📊</span> Dados Simulados do Relógio (Sensor Data Editor)
+      </div>
+      <button class="btn" id="btnCloseSensors">✕ Fechar</button>
+    </div>
+    <div class="drawer-body">
+      <!-- Quick Presets -->
+      <div class="preset-btns">
+        <button class="btn" onclick="applySensorPreset('workout')">🏃‍♂️ Pós-Treino (FC 155, 12.5k passos)</button>
+        <button class="btn" onclick="applySensorPreset('sleep')">😴 Dormindo (FC 54, Sono 465m)</button>
+        <button class="btn" onclick="applySensorPreset('low_bat')">🪫 Bateria Fraca (5%)</button>
+        <button class="btn" onclick="applySensorPreset('productive')">⚡ Dia Produtivo (10k passos, PAI 130)</button>
+      </div>
+
+      <div class="sensors-grid">
+        <!-- Passos -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">👟 Passos</span>
+            <span class="sensor-value" id="valSteps">8.420</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputSteps" min="0" max="40000" step="100" value="8420">
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">Meta: 10.000 passos</span>
+        </div>
+
+        <!-- Frequência Cardíaca -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">❤️ Freq. Cardíaca</span>
+            <span class="sensor-value" id="valHr">72 BPM</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputHr" min="40" max="210" step="1" value="72">
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">Repouso: 62 BPM</span>
+        </div>
+
+        <!-- Calorias -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🔥 Calorias</span>
+            <span class="sensor-value" id="valCal">420 kcal</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputCal" min="0" max="3000" step="10" value="420">
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">Meta: 600 kcal</span>
+        </div>
+
+        <!-- Sono -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">😴 Sono Total</span>
+            <span class="sensor-value" id="valSleep">465 min (7h 45m)</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputSleep" min="0" max="720" step="15" value="465">
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">Score: 85 • Profundo: 90m • REM: 100m</span>
+        </div>
+
+        <!-- SpO2 -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🫁 Oxigênio (SpO2)</span>
+            <span class="sensor-value" id="valSpo2">98%</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputSpo2" min="70" max="100" step="1" value="98">
+          </div>
+        </div>
+
+        <!-- Estresse -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🧘 Estresse</span>
+            <span class="sensor-value" id="valStress">28 / 100 (Relaxado)</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputStress" min="0" max="100" step="1" value="28">
+          </div>
+        </div>
+
+        <!-- Temperatura Corporal -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🌡️ Temp. Corporal</span>
+            <span class="sensor-value" id="valTemp">36.6 °C</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputTemp" min="34" max="42" step="0.1" value="36.6">
+          </div>
+        </div>
+
+        <!-- Distância -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">📍 Distância</span>
+            <span class="sensor-value" id="valDistance">5.8 km</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputDistance" min="0" max="30" step="0.1" value="5.8">
+          </div>
+        </div>
+
+        <!-- PAI e Ficar em Pé -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🏆 PAI & Ficar em Pé</span>
+            <span class="sensor-value" id="valPai">PAI: 125 | 10h</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputPai" min="0" max="200" step="1" value="125">
+          </div>
+        </div>
+
+        <!-- Bateria & Carregando -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">🔋 Bateria</span>
+            <span class="sensor-value" id="valBat">85%</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="inputBat" min="1" max="100" step="1" value="85">
+          </div>
+          <div class="sensor-toggle-row">
+            <span style="font-size:11px;color:var(--text-muted);">Carregando</span>
+            <label class="switch">
+              <input type="checkbox" id="inputCharging">
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Conexão Bluetooth -->
+        <div class="sensor-card">
+          <div class="sensor-header">
+            <span class="sensor-name">📶 Conexão BLE</span>
+            <span class="sensor-value" id="valBle">Conectado</span>
+          </div>
+          <div class="sensor-toggle-row" style="margin-top:8px;">
+            <span style="font-size:11px;color:var(--text-muted);">Status Bluetooth</span>
+            <label class="switch">
+              <input type="checkbox" id="inputBle" checked>
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Drawer: Console Logs -->
+  <div class="drawer" id="consoleDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>💻</span> Live Console Logs & Zeus Bridge Events
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn" id="btnClearLogs">Limpar</button>
+        <button class="btn" id="btnCloseConsole">✕ Fechar</button>
+      </div>
+    </div>
+    <div class="drawer-body">
+      <div class="console-tabs">
+        <button class="console-tab active" data-filter="all">Todos</button>
+        <button class="console-tab" data-filter="watch">Watch UI</button>
+        <button class="console-tab" data-filter="app-side">App-Side</button>
+        <button class="console-tab" data-filter="sensor">Sensores</button>
+        <button class="console-tab" data-filter="zeus">Zeus Bridge</button>
+      </div>
+      <div class="console-logs" id="consoleLogList"></div>
+    </div>
+  </div>
+
+  <!-- Client Application Script -->
+  <script>
+    let currentState = null;
+    let ws = null;
+    let activeFilter = 'all';
+
+    // Canvas & Bezel references
+    const canvas = document.getElementById('watchCanvas');
+    const ctx = canvas.getContext('2d');
+    const watchBezel = document.getElementById('watchBezel');
+    const watchScreen = document.getElementById('watchScreen');
+    const watchToast = document.getElementById('watchToast');
+
+    // Live clock in phone status bar
+    function updateClock() {
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      document.getElementById('phoneClock').innerText = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // =========================================================================
+    // WebSocket Real-time Bridge
+    // =========================================================================
+    function connectWebSocket() {
+      const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${proto}//${location.host}/ws`;
+
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        console.log('[WS] Connected to Zepp OS Emulator Server');
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const msg = JSON.parse(event.data);
+          if (msg.type === 'init' || msg.type === 'state_update') {
+            onStateUpdate(msg.state || msg.payload);
+          } else if (msg.type === 'sensor_update') {
+            if (currentState) currentState.sensors = msg.payload;
+            syncSensorUI(msg.payload);
+            renderWatchCanvas();
+          } else if (msg.type === 'setting_update') {
+            if (currentState) currentState.settings = msg.payload.settings;
+            loadPhoneSettings();
+          } else if (msg.type === 'log') {
+            appendLog(msg.payload);
+          } else if (msg.type === 'toast') {
+            showWatchToast(msg.payload.message, msg.payload.duration);
+          } else if (msg.type === 'zeus_refresh') {
+            fetchState();
+          }
+        } catch (e) {
+          console.error('[WS] Parse error:', e);
+        }
+      };
+
+      ws.onclose = () => {
+        setTimeout(connectWebSocket, 1500);
+      };
+    }
+
+    async function fetchState() {
+      try {
+        const res = await fetch('/api/state');
+        const state = await res.json();
+        onStateUpdate(state);
+      } catch (e) {
+        console.error('Fetch state error:', e);
+      }
+    }
+
+    function onStateUpdate(state) {
+      currentState = state;
+
+      // Update Controls
+      document.getElementById('projectSelect').value = state.projectName;
+      document.getElementById('deviceSelect').value = state.device.id;
+      document.getElementById('apiLevelSelect').value = state.apiLevel;
+
+      // Update Bezel & Canvas Dimensions
+      updateBezelAppearance(state.device);
+
+      // Render Watch Canvas
+      renderWatchCanvas();
+
+      // Render Phone Settings
+      loadPhoneSettings();
+
+      // Sync Sensors
+      syncSensorUI(state.sensors);
+
+      // Meta tags
+      document.getElementById('metaDevice').innerText = `${state.device.name} (${state.device.width}×${state.device.height})`;
+      document.getElementById('metaRoute').innerText = `Rota: ${state.route}`;
+      document.getElementById('metaApi').innerText = `Zepp OS ${state.apiLevel}`;
+      document.getElementById('phoneAppTitle').innerText = state.appConfig?.app?.appName || state.projectName;
+
+      // Render Logs
+      renderLogs(state.logs || []);
+    }
+
+    // =========================================================================
+    // Bezel Dynamic Adaptation
+    // =========================================================================
+    function updateBezelAppearance(device) {
+      watchBezel.classList.remove('bezel-round', 'bezel-square', 'bezel-band');
+      watchBezel.classList.add(`bezel-${device.bezelStyle || 'round'}`);
+
+      canvas.width = device.width;
+      canvas.height = device.height;
+      watchScreen.style.width = `${device.width}px`;
+      watchScreen.style.height = `${device.height}px`;
+
+      if (device.shape === 'round') {
+        watchBezel.style.width = `${device.width + 50}px`;
+        watchBezel.style.height = `${device.height + 50}px`;
+      } else if (device.shape === 'square') {
+        watchBezel.style.width = `${device.width + 48}px`;
+        watchBezel.style.height = `${device.height + 48}px`;
+      } else {
+        watchBezel.style.width = `${device.width + 56}px`;
+        watchBezel.style.height = `${device.height + 64}px`;
+      }
+    }
+
+    // =========================================================================
+    // HTML5 Canvas Watch Widget Renderer
+    // =========================================================================
+    function renderWatchCanvas() {
+      if (!currentState || !currentState.widgets) return;
+
+      const w = currentState.device.width;
+      const h = currentState.device.height;
+      const scrollY = currentState.renderScroll || 0;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Background
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, w, h);
+
+      // Render all widgets
+      currentState.widgets.forEach(widget => {
+        const x = widget.x || 0;
+        const y = (widget.y || 0) - scrollY;
+        const widgetW = widget.w || 0;
+        const widgetH = widget.h || 0;
+
+        if (widget.type === 'FILL_RECT') {
+          ctx.fillStyle = hexColor(widget.color || 0x1e293b);
+          if (widget.radius && ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(x, y, widgetW, widgetH, widget.radius);
+            ctx.fill();
+          } else {
+            ctx.fillRect(x, y, widgetW, widgetH);
+          }
+        } else if (widget.type === 'STROKE_RECT') {
+          ctx.strokeStyle = hexColor(widget.color || 0xffffff);
+          ctx.lineWidth = widget.line_width || 2;
+          if (widget.radius && ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(x, y, widgetW, widgetH, widget.radius);
+            ctx.stroke();
+          } else {
+            ctx.strokeRect(x, y, widgetW, widgetH);
+          }
+        } else if (widget.type === 'TEXT') {
+          ctx.fillStyle = hexColor(widget.color || 0xffffff);
+          ctx.font = `600 ${widget.text_size || 20}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+          ctx.textAlign = widget.align_h === 'center_h' ? 'center' : widget.align_h === 'right' ? 'right' : 'left';
+          ctx.textBaseline = widget.align_v === 'center_v' ? 'middle' : 'top';
+
+          const textX = widget.align_h === 'center_h' ? x + widgetW / 2 : widget.align_h === 'right' ? x + widgetW : x;
+          const textY = widget.align_v === 'center_v' ? y + widgetH / 2 : y;
+          ctx.fillText(widget.text || '', textX, textY);
+        } else if (widget.type === 'BUTTON') {
+          const bg = widget.pressed ? (widget.press_color || 0x475569) : (widget.normal_color || 0x1e293b);
+          ctx.fillStyle = hexColor(bg);
+
+          if (widget.radius && ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(x, y, widgetW, widgetH, widget.radius);
+            ctx.fill();
+          } else {
+            ctx.fillRect(x, y, widgetW, widgetH);
+          }
+
+          ctx.fillStyle = hexColor(widget.color || 0xffffff);
+          ctx.font = `600 ${widget.text_size || 20}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(widget.text || '', x + widgetW / 2, y + widgetH / 2);
+        } else if (widget.type === 'ARC') {
+          const cx = x + widgetW / 2;
+          const cy = y + widgetH / 2;
+          const r = Math.min(widgetW, widgetH) / 2 - (widget.line_width || 10) / 2;
+          const startRad = ((widget.start_angle || -90) * Math.PI) / 180;
+          const endRad = ((widget.end_angle || 270) * Math.PI) / 180;
+
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, startRad, endRad);
+          ctx.strokeStyle = hexColor(widget.color || 0x334155);
+          ctx.lineWidth = widget.line_width || 12;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        } else if (widget.type === 'ARC_PROGRESS') {
+          const cx = x + widgetW / 2;
+          const cy = y + widgetH / 2;
+          const r = Math.min(widgetW, widgetH) / 2 - (widget.line_width || 10) / 2;
+          const startAngle = widget.start_angle !== undefined ? widget.start_angle : -90;
+          const totalSweep = 360;
+          const levelPct = Math.max(0, Math.min(100, widget.level || 0)) / 100;
+          const startRad = (startAngle * Math.PI) / 180;
+          const endRad = ((startAngle + totalSweep * levelPct) * Math.PI) / 180;
+
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, startRad, endRad);
+          ctx.strokeStyle = hexColor(widget.color || 0x38bdf8);
+          ctx.lineWidth = widget.line_width || 12;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        }
+      });
+    }
+
+    function hexColor(c) {
+      if (typeof c === 'string') return c;
+      return '#' + c.toString(16).padStart(6, '0');
+    }
+
+    // =========================================================================
+    // Watch Canvas Interactive Events
+    // =========================================================================
+    canvas.addEventListener('click', async (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      const clickX = (e.clientX - rect.left) * scaleX;
+      const clickY = (e.clientY - rect.top) * scaleY + (currentState?.renderScroll || 0);
+
+      try {
+        const res = await fetch('/api/click', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ x: clickX, y: clickY })
+        });
+        const data = await res.json();
+        if (data.success) {
+          onStateUpdate(data.state);
+        }
+      } catch (err) {
+        console.error('Click error:', err);
+      }
+    });
+
+    // Mouse wheel scrolls screen
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (!currentState) return;
+      currentState.renderScroll = Math.max(0, (currentState.renderScroll || 0) + (e.deltaY > 0 ? 40 : -40));
+      renderWatchCanvas();
+    });
+
+    // Hardware buttons
+    document.getElementById('hardwareCrown').addEventListener('click', () => {
+      fetch('/api/back', { method: 'POST' }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('hardwareBack').addEventListener('click', () => {
+      fetch('/api/back', { method: 'POST' }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('btnHome').addEventListener('click', () => {
+      fetch('/api/navigate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: currentState?.routes[0] || 'page/index' })
+      }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('btnBack').addEventListener('click', () => {
+      fetch('/api/back', { method: 'POST' }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    // Show Toast
+    function showWatchToast(msg, duration = 2500) {
+      watchToast.innerText = msg;
+      watchToast.classList.add('active');
+      setTimeout(() => {
+        watchToast.classList.remove('active');
+      }, duration);
+    }
+
+    // =========================================================================
+    // Companion Phone Settings Page (DSL Renderer)
+    // =========================================================================
+    async function loadPhoneSettings() {
+      try {
+        const res = await fetch('/api/app-settings');
+        const data = await res.json();
+        renderPhoneSettingsTree(data.tree);
+      } catch (e) {
+        console.error('Settings load error:', e);
+      }
+    }
+
+    function renderPhoneSettingsTree(tree) {
+      const container = document.getElementById('phoneSettingsContent');
+      container.innerHTML = '';
+      if (!tree) return;
+
+      function renderNode(node) {
+        if (!node) return null;
+
+        if (node.type === 'Card' || (node.type === 'View' && node.children && node.children.length)) {
+          const card = document.createElement('div');
+          card.className = 'setting-card';
+
+          if (node.title) {
+            const t = document.createElement('div');
+            t.className = 'setting-card-title';
+            t.innerText = node.title;
+            card.appendChild(t);
+          }
+          if (node.subtitle) {
+            const s = document.createElement('div');
+            s.className = 'setting-card-sub';
+            s.innerText = node.subtitle;
+            card.appendChild(s);
+          }
+
+          if (node.children) {
+            node.children.forEach(child => {
+              const el = renderNode(child);
+              if (el) card.appendChild(el);
+            });
+          }
+          return card;
+        }
+
+        if (node.type === 'Section') {
+          const sec = document.createElement('div');
+          sec.className = 'setting-card';
+
+          if (node.title || node.props?.title) {
+            const t = document.createElement('div');
+            t.className = 'setting-card-title';
+            t.innerText = node.title || node.props?.title;
+            sec.appendChild(t);
+          }
+
+          const children = node.children || [];
+          children.forEach(child => {
+            const el = renderNode(child);
+            if (el) sec.appendChild(el);
+          });
+          return sec;
+        }
+
+        if (node.type === 'TextInput') {
+          const p = node.props || node;
+          const group = document.createElement('div');
+          group.className = 'setting-field';
+
+          const label = document.createElement('label');
+          label.className = 'setting-label';
+          label.innerText = p.label || p.key;
+          group.appendChild(label);
+
+          const input = document.createElement('input');
+          input.className = 'setting-input';
+          input.type = 'text';
+          input.placeholder = p.placeholder || '';
+          input.value = currentState?.settings[p.key] || p.value || '';
+          input.addEventListener('change', (e) => {
+            setSetting(p.key, e.target.value);
+          });
+          group.appendChild(input);
+
+          if (p.hint) {
+            const hint = document.createElement('span');
+            hint.style.fontSize = '10px';
+            hint.style.color = 'var(--text-muted)';
+            hint.innerText = p.hint;
+            group.appendChild(hint);
+          }
+          return group;
+        }
+
+        if (node.type === 'Select') {
+          const p = node.props || node;
+          const group = document.createElement('div');
+          group.className = 'setting-field';
+
+          const label = document.createElement('label');
+          label.className = 'setting-label';
+          label.innerText = p.label || p.key;
+          group.appendChild(label);
+
+          const select = document.createElement('select');
+          select.className = 'setting-select';
+          (p.options || []).forEach(opt => {
+            const o = document.createElement('option');
+            o.value = opt.value;
+            o.innerText = opt.name;
+            if (opt.value === (currentState?.settings[p.key] || p.value)) {
+              o.selected = true;
+            }
+            select.appendChild(o);
+          });
+
+          select.addEventListener('change', (e) => {
+            setSetting(p.key, e.target.value);
+          });
+          group.appendChild(select);
+          return group;
+        }
+
+        if (node.type === 'Notice') {
+          const div = document.createElement('div');
+          div.className = `setting-notice notice-${node.variant || 'info'}`;
+          div.innerHTML = `<strong>${node.title}</strong><div style="margin-top:4px;">${node.text}</div>`;
+          return div;
+        }
+
+        if (node.type === 'Text') {
+          const p = document.createElement('div');
+          p.style.fontSize = '11px';
+          p.style.color = 'var(--text-muted)';
+          p.style.lineHeight = '16px';
+          p.innerText = node.content || node.props?.content || '';
+          return p;
+        }
+
+        return null;
+      }
+
+      if (tree.children) {
+        tree.children.forEach(c => {
+          const el = renderNode(c);
+          if (el) container.appendChild(el);
+        });
+      }
+    }
+
+    async function setSetting(key, value) {
+      try {
+        await fetch('/api/setting', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key, value })
+        });
+        showWatchToast(`Configuração "${key}" salva!`);
+        loadPhoneSettings();
+      } catch (e) {
+        console.error('Save setting error:', e);
+      }
+    }
+
+    // =========================================================================
+    // Sensor Controls & Sliders
+    // =========================================================================
+    function syncSensorUI(sensors) {
+      if (!sensors) return;
+
+      document.getElementById('inputSteps').value = sensors.steps;
+      document.getElementById('valSteps').innerText = sensors.steps.toLocaleString();
+
+      document.getElementById('inputHr').value = sensors.heartRate;
+      document.getElementById('valHr').innerText = `${sensors.heartRate} BPM`;
+
+      document.getElementById('inputCal').value = sensors.calories;
+      document.getElementById('valCal').innerText = `${sensors.calories} kcal`;
+
+      document.getElementById('inputSleep').value = sensors.sleep;
+      const h = Math.floor(sensors.sleep / 60);
+      const m = sensors.sleep % 60;
+      document.getElementById('valSleep').innerText = `${sensors.sleep} min (${h}h ${m}m)`;
+
+      document.getElementById('inputSpo2').value = sensors.spo2;
+      document.getElementById('valSpo2').innerText = `${sensors.spo2}%`;
+
+      document.getElementById('inputStress').value = sensors.stress;
+      document.getElementById('valStress').innerText = `${sensors.stress} / 100 (${sensors.stress < 30 ? 'Relaxado' : sensors.stress < 60 ? 'Normal' : 'Alto'})`;
+
+      document.getElementById('inputTemp').value = sensors.bodyTemp;
+      document.getElementById('valTemp').innerText = `${sensors.bodyTemp} °C`;
+
+      document.getElementById('inputDistance').value = sensors.distance;
+      document.getElementById('valDistance').innerText = `${sensors.distance} km`;
+
+      document.getElementById('inputPai').value = sensors.pai;
+      document.getElementById('valPai').innerText = `PAI: ${sensors.pai} | ${sensors.stand}h`;
+
+      document.getElementById('inputBat').value = sensors.battery;
+      document.getElementById('valBat').innerText = `${sensors.battery}%`;
+
+      document.getElementById('inputCharging').checked = !!sensors.isCharging;
+      document.getElementById('inputBle').checked = !!sensors.bleConnected;
+      document.getElementById('valBle').innerText = sensors.bleConnected ? 'Conectado' : 'Desconectado';
+    }
+
+    function setupSensorInputs() {
+      const bind = (id, key, transform) => {
+        document.getElementById(id).addEventListener('input', (e) => {
+          const val = transform(e.target.value);
+          sendSensorsUpdate({ [key]: val });
+        });
+      };
+
+      bind('inputSteps', 'steps', Number);
+      bind('inputHr', 'heartRate', Number);
+      bind('inputCal', 'calories', Number);
+      bind('inputSleep', 'sleep', Number);
+      bind('inputSpo2', 'spo2', Number);
+      bind('inputStress', 'stress', Number);
+      bind('inputTemp', 'bodyTemp', Number);
+      bind('inputDistance', 'distance', Number);
+      bind('inputPai', 'pai', Number);
+      bind('inputBat', 'battery', Number);
+
+      document.getElementById('inputCharging').addEventListener('change', (e) => {
+        sendSensorsUpdate({ isCharging: e.target.checked });
+      });
+
+      document.getElementById('inputBle').addEventListener('change', (e) => {
+        sendSensorsUpdate({ bleConnected: e.target.checked });
+      });
+    }
+
+    async function sendSensorsUpdate(updates) {
+      try {
+        const res = await fetch('/api/sensors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updates)
+        });
+        const data = await res.json();
+        if (data.sensors) {
+          syncSensorUI(data.sensors);
+          renderWatchCanvas();
+        }
+      } catch (e) {
+        console.error('Sensors error:', e);
+      }
+    }
+
+    function applySensorPreset(type) {
+      let payload = {};
+      if (type === 'workout') {
+        payload = { heartRate: 155, steps: 12500, calories: 650, bodyTemp: 37.1, stress: 55 };
+      } else if (type === 'sleep') {
+        payload = { heartRate: 54, steps: 8420, calories: 420, sleep: 465, stress: 12 };
+      } else if (type === 'low_bat') {
+        payload = { battery: 5, bleConnected: false, isCharging: false };
+      } else if (type === 'productive') {
+        payload = { steps: 10200, pai: 130, stand: 12, calories: 580, battery: 90 };
+      }
+      sendSensorsUpdate(payload);
+      showWatchToast(`Preset "${type}" aplicado!`);
+    }
+
+    // =========================================================================
+    // Console Logs
+    // =========================================================================
+    function renderLogs(logs) {
+      const list = document.getElementById('consoleLogList');
+      list.innerHTML = '';
+      logs.filter(l => activeFilter === 'all' || l.source === activeFilter).forEach(appendLogElement);
+      list.scrollTop = list.scrollHeight;
+    }
+
+    function appendLog(entry) {
+      if (activeFilter !== 'all' && entry.source !== activeFilter) return;
+      appendLogElement(entry);
+      const list = document.getElementById('consoleLogList');
+      list.scrollTop = list.scrollHeight;
+    }
+
+    function appendLogElement(entry) {
+      const list = document.getElementById('consoleLogList');
+      const div = document.createElement('div');
+      div.className = 'log-line';
+      div.innerHTML = `
+        <span class="log-time">${entry.timestamp}</span>
+        <span class="log-src ${entry.source}">[${entry.source}]</span>
+        <span class="log-msg">${escapeHtml(entry.message)}</span>
+      `;
+      list.appendChild(div);
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    document.querySelectorAll('.console-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        document.querySelectorAll('.console-tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        activeFilter = e.target.getAttribute('data-filter');
+        if (currentState) renderLogs(currentState.logs || []);
+      });
+    });
+
+    document.getElementById('btnClearLogs').addEventListener('click', () => {
+      fetch('/api/logs/clear', { method: 'POST' });
+      document.getElementById('consoleLogList').innerHTML = '';
+    });
+
+    // =========================================================================
+    // Header Controls & Drawers
+    // =========================================================================
+    document.getElementById('btnReload').addEventListener('click', () => {
+      const project = document.getElementById('projectSelect').value;
+      const device = document.getElementById('deviceSelect').value;
+      const apiLevel = document.getElementById('apiLevelSelect').value;
+
+      fetch('/api/load-app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ projectPath: project, device, apiLevel })
+      }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('deviceSelect').addEventListener('change', (e) => {
+      fetch('/api/load-app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ device: e.target.value })
+      }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('apiLevelSelect').addEventListener('change', (e) => {
+      fetch('/api/load-app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiLevel: e.target.value })
+      }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    document.getElementById('projectSelect').addEventListener('change', (e) => {
+      fetch('/api/load-app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ projectPath: e.target.value })
+      }).then(r => r.json()).then(d => d.success && onStateUpdate(d.state));
+    });
+
+    // Drawer Toggles
+    const sensorsDrawer = document.getElementById('sensorsDrawer');
+    const consoleDrawer = document.getElementById('consoleDrawer');
+
+    document.getElementById('btnToggleSensors').addEventListener('click', () => {
+      sensorsDrawer.classList.toggle('open');
+      consoleDrawer.classList.remove('open');
+    });
+
+    document.getElementById('btnCloseSensors').addEventListener('click', () => {
+      sensorsDrawer.classList.remove('open');
+    });
+
+    document.getElementById('btnToggleConsole').addEventListener('click', () => {
+      consoleDrawer.classList.toggle('open');
+      sensorsDrawer.classList.remove('open');
+    });
+
+    document.getElementById('btnCloseConsole').addEventListener('click', () => {
+      consoleDrawer.classList.remove('open');
+    });
+
+    // Initialization
+    setupSensorInputs();
+    connectWebSocket();
+    fetchState();
+  </script>
+</body>
+</html>

@@ -19,4 +19,6 @@ __pycache__
 .~lock*
 
 !/projects/demo
+/projects/demo/*.png
+/projects/demo/widgets.json
 !.empty

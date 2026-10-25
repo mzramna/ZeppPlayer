@@ -33,7 +33,10 @@
     "physicalKeysCount": 1,
     "watchfacePreviewWidth": 266,
     "watchfacePreviewHeight": 307,
-    "osVersion": "2.1.0"
+    "osVersion": "3.6.0",
+    "radius": 86,
+    "defaultApi": "3.6.0",
+    "apiLevel": "3.6.0"
   },
   {
     "id": "balance",
@@ -53,7 +56,10 @@
     "physicalKeysCount": 2,
     "watchfacePreviewWidth": 324,
     "watchfacePreviewHeight": 324,
-    "osVersion": "3.5.0"
+    "osVersion": "3.6.0",
+    "radius": 240,
+    "defaultApi": "3.6.0",
+    "apiLevel": "3.6.0"
   },
   {
     "id": "bip5",
@@ -205,7 +211,10 @@
     "physicalKeysCount": 2,
     "watchfacePreviewWidth": 314,
     "watchfacePreviewHeight": 314,
-    "osVersion": "3.0.0"
+    "osVersion": "2.0.0",
+    "radius": 233,
+    "defaultApi": "2.0.0",
+    "apiLevel": "2.0.0"
   },
   {
     "id": "gtr4le",
@@ -257,12 +266,15 @@
     "screenShape": "square",
     "screenWidth": 336,
     "screenHeight": 384,
-    "screenRadius": 80,
+    "screenRadius": 60,
     "iconSize": 80,
     "physicalKeysCount": 1,
     "watchfacePreviewWidth": 228,
     "watchfacePreviewHeight": 260,
-    "osVersion": "1.0.0"
+    "osVersion": "1.0.0",
+    "radius": 60,
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
   },
   {
     "id": "falcon",
@@ -293,15 +305,18 @@
       254
     ],
     "chipset": "dialog",
-    "screenShape": "band",
+    "screenShape": "pill",
     "screenWidth": 194,
     "screenHeight": 368,
-    "screenRadius": 25,
+    "screenRadius": 97,
     "iconSize": 100,
     "physicalKeysCount": 0,
     "watchfacePreviewWidth": 152,
     "watchfacePreviewHeight": 288,
-    "osVersion": "1.0.0"
+    "osVersion": "1.0.0",
+    "radius": 97,
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
   },
   {
     "id": "gtr3pro",
@@ -396,7 +411,7 @@
       266
     ],
     "chipset": "dialog",
-    "screenShape": "band",
+    "screenShape": "pill",
     "screenWidth": 192,
     "screenHeight": 490,
     "screenRadius": 96,
@@ -404,6 +419,182 @@
     "physicalKeysCount": 4,
     "watchfacePreviewWidth": 128,
     "watchfacePreviewHeight": 327,
-    "osVersion": "1.0.0"
+    "osVersion": "1.0.0",
+    "radius": 96,
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
+  },
+  {
+    "id": "amazfit-balance",
+    "deviceName": "Amazfit Balance",
+    "alternativeDeviceNames": [
+      "balance"
+    ],
+    "deviceSource": [
+      8519936,
+      8519937,
+      8519939
+    ],
+    "chipset": "nxp",
+    "screenShape": "round",
+    "screenWidth": 480,
+    "screenHeight": 480,
+    "screenRadius": 240,
+    "radius": 240,
+    "iconSize": 248,
+    "physicalKeysCount": 2,
+    "watchfacePreviewWidth": 324,
+    "watchfacePreviewHeight": 324,
+    "osVersion": "3.6.0",
+    "defaultApi": "3.6.0",
+    "apiLevel": "3.6.0"
+  },
+  {
+    "id": "amazfit-balance-2",
+    "deviceName": "Amazfit Balance 2",
+    "alternativeDeviceNames": [
+      "balance-2"
+    ],
+    "deviceSource": [
+      8519940
+    ],
+    "chipset": "nxp",
+    "screenShape": "round",
+    "screenWidth": 480,
+    "screenHeight": 480,
+    "screenRadius": 240,
+    "radius": 240,
+    "iconSize": 248,
+    "physicalKeysCount": 2,
+    "watchfacePreviewWidth": 324,
+    "watchfacePreviewHeight": 324,
+    "osVersion": "4.0.0",
+    "defaultApi": "4.0.0",
+    "apiLevel": "4.0.0"
+  },
+  {
+    "id": "amazfit-active",
+    "deviceName": "Amazfit Active",
+    "alternativeDeviceNames": [
+      "active"
+    ],
+    "deviceSource": [
+      8323328
+    ],
+    "chipset": "apollo",
+    "screenShape": "square",
+    "screenWidth": 390,
+    "screenHeight": 450,
+    "screenRadius": 86,
+    "radius": 86,
+    "iconSize": 248,
+    "physicalKeysCount": 1,
+    "watchfacePreviewWidth": 266,
+    "watchfacePreviewHeight": 307,
+    "osVersion": "3.6.0",
+    "defaultApi": "3.6.0",
+    "apiLevel": "3.6.0"
+  },
+  {
+    "id": "amazfit-gtr-4",
+    "deviceName": "Amazfit GTR 4",
+    "alternativeDeviceNames": [
+      "gtr4"
+    ],
+    "deviceSource": [
+      7930112,
+      7930113
+    ],
+    "chipset": "nxp",
+    "screenShape": "round",
+    "screenWidth": 466,
+    "screenHeight": 466,
+    "screenRadius": 233,
+    "radius": 233,
+    "iconSize": 248,
+    "physicalKeysCount": 2,
+    "watchfacePreviewWidth": 314,
+    "watchfacePreviewHeight": 314,
+    "osVersion": "2.0.0",
+    "defaultApi": "2.0.0",
+    "apiLevel": "2.0.0"
+  },
+  {
+    "id": "amazfit-gts-4-mini",
+    "deviceName": "Amazfit GTS 4 mini",
+    "alternativeDeviceNames": [
+      "gts4mini"
+    ],
+    "deviceSource": [
+      246,
+      247
+    ],
+    "chipset": "dialog",
+    "screenShape": "square",
+    "screenWidth": 336,
+    "screenHeight": 384,
+    "screenRadius": 60,
+    "radius": 60,
+    "iconSize": 80,
+    "physicalKeysCount": 1,
+    "watchfacePreviewWidth": 228,
+    "watchfacePreviewHeight": 260,
+    "osVersion": "1.0.0",
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
+  },
+  {
+    "id": "amazfit-band-7",
+    "deviceName": "Amazfit Band 7",
+    "alternativeDeviceNames": [
+      "band7"
+    ],
+    "deviceSource": [
+      252,
+      253,
+      254
+    ],
+    "chipset": "dialog",
+    "screenShape": "pill",
+    "screenWidth": 194,
+    "screenHeight": 368,
+    "screenRadius": 97,
+    "radius": 97,
+    "iconSize": 100,
+    "physicalKeysCount": 0,
+    "watchfacePreviewWidth": 152,
+    "watchfacePreviewHeight": 288,
+    "osVersion": "1.0.0",
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
+  },
+  {
+    "id": "mi-band-7",
+    "deviceName": "Mi Band 7",
+    "alternativeDeviceNames": [
+      "mi_band7"
+    ],
+    "deviceSource": [
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266
+    ],
+    "chipset": "dialog",
+    "screenShape": "pill",
+    "screenWidth": 192,
+    "screenHeight": 490,
+    "screenRadius": 96,
+    "radius": 96,
+    "iconSize": 100,
+    "physicalKeysCount": 4,
+    "watchfacePreviewWidth": 128,
+    "watchfacePreviewHeight": 327,
+    "osVersion": "1.0.0",
+    "defaultApi": "1.0.0",
+    "apiLevel": "1.0.0"
   }
 ]
