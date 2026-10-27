@@ -2,15 +2,26 @@
   "name": "zeppplayer",
   "version": "1.7.2",
   "description": "Unofficial ZeppOS emulator",
-  "main": "app/zepp_player/cli.js",
+  "main": "src/runtime.js",
   "scripts": {
     "browser:build": "esbuild --bundle --outdir=app src/index.browser.js",
     "cli:build": "esbuild --bundle --platform=node --external:canvas --outdir=app src/index.cli.js",
     "browser:watch": "esbuild --bundle --outdir=app src/index.browser.js --watch",
-    "build": "npm run browser:build && npm run cli:build"
+    "build": "npm run browser:build && npm run cli:build",
+    "server": "node src/server.js",
+    "start": "node src/server.js",
+    "mcp": "node bin/mcp.js",
+    "test:unit": "node --test test/runtime-engine.test.js test/server-bridge.test.js test/playwright.test.mjs",
+    "test:mcp": "node test/mcp.test.mjs",
+    "test:playwright": "node --test test/playwright.test.mjs",
+    "test:suites": "node bin/zepp-playwright.js",
+    "test": "node --test test/runtime-engine.test.js test/server-bridge.test.js test/playwright.test.mjs && node test/mcp.test.mjs && node bin/zepp-playwright.js",
+    "test:coverage": "node --test --experimental-test-coverage test/runtime-engine.test.js test/server-bridge.test.js test/playwright.test.mjs && node test/mcp.test.mjs && node bin/zepp-playwright.js"
   },
   "bin": {
-    "zepp-preview": "app/index.cli.js"
+    "zepp-preview": "app/index.cli.js",
+    "zeppos-mcp": "bin/mcp.js",
+    "zepp-playwright": "bin/zepp-playwright.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +32,12 @@
   "dependencies": {
     "@types/node": "^20.10.5",
     "buffer": "^6.0.3",
-    "canvas": "^2.11.2",
+    "express": "^5.3.0",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
-    "mini-signals": "^2.0.0"
+    "mini-signals": "^2.0.0",
+    "socket.io": "^4.8.4",
+    "ws": "^8.22.0"
   },
   "devDependencies": {
     "@types/uuid": "^9.0.7",
@@ -36,5 +49,12 @@
     "tga": "^1.0.7",
     "uuid": "^9.0.1",
     "yargs": "^17.7.2"
+  },
+  "allowScripts": {
+    "canvas@2.11.2": true
+  },
+  "optionalDependencies": {
+    "@napi-rs/canvas": "^1.0.13",
+    "canvas": "^2.11.2"
   }
 }

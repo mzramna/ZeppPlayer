@@ -1,0 +1,24 @@
+{
+  "name": "ha-zepp",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Home Assistant companion for Zepp OS watches",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:all": "node scripts/build.js --api all",
+    "preview": "node scripts/preview.js",
+    "verify": "node scripts/build.js --api all --verify",
+    "i18n": "node scripts/i18n.js",
+    "test": "node --import ./test/helpers/setup.js --test 'test/**/*.test.js'",
+    "check": "tsc -p jsconfig.json",
+    "test:coverage": "node --import ./test/helpers/setup.js --test --experimental-test-coverage --test-coverage-include='app.js' --test-coverage-include='app-side/**' --test-coverage-include='app-service/**' --test-coverage-include='page/**' --test-coverage-include='setting/**' --test-coverage-include='shared/**' --test-coverage-include='utils/**' --test-coverage-include='scripts/**' --test-coverage-lines=80 --test-coverage-branches=70 --test-coverage-functions=80 'test/**/*.test.js'"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@zeppos/zml": "0.0.43"
+  },
+  "devDependencies": {
+    "@zeppos/device-types": "4.0.0",
+    "typescript": "5.6.3"
+  }
+}

@@ -1,0 +1,35 @@
+msgid "Search"
+msgstr "搜索"
+
+msgid "Access"
+msgstr "访问Home Assistant"
+
+msgid "IPLocal"
+msgstr "您的HA实例的本地地址"
+
+msgid "IPExternal"
+msgstr "您的HA实例的外部地址"
+
+msgid "LongToken"
+msgstr "长期令牌"
+
+msgid "FromProfile"
+msgstr "从您的HA个人资料创建"
+
+msgid "UpdateSensor"
+msgstr "每小时更新HA上的传感器（BETA）"
+
+msgid "WorksBetter"
+msgstr "如果您关闭所有通知，效果会更好"
+
+msgid "Entities"
+msgstr "实体"
+
+msgid "SearchEntities"
+msgstr "搜索要控制的实体"
+
+msgid "SearchEntitiesEG"
+msgstr "您可以搜索实体的ID（例如，light.bulb）、域（例如，light），或将其留空以显示所有可控实体（媒体播放器、灯光、开关、input_boolean、脚本、自动化和二进制传感器）"
+
+msgid "Top"
+msgstr "顶部"

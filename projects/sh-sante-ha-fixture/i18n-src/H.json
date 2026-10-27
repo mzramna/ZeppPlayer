@@ -1,0 +1,17 @@
+{
+  "loading": {
+    "en-US": "Loading...",
+    "pt-BR": "Carregando...",
+    "es-ES": "Cargando..."
+  },
+  "camera_refresh": {
+    "en-US": "Refresh",
+    "pt-BR": "Atualizar",
+    "es-ES": "Actualizar"
+  },
+  "camera_disabled": {
+    "en-US": "Camera snapshots are disabled in this build",
+    "pt-BR": "Fotos de câmera desativadas nesta versão",
+    "es-ES": "Las fotos de cámara están desactivadas en esta versión"
+  }
+}

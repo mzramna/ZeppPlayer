@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-24",
+  "calories": { "eaten": 1200, "burned": 300, "remaining": 800, "goal": 2000 },
+  "macros": { "protein": { "value": 80, "goal": 150 }, "carbs": { "value": 120, "goal": 250 }, "fat": { "value": 40, "goal": 70 }, "fiber": { "value": 10, "goal": 30 } },
+  "water": { "ml": 500, "goal_ml": 2000 },
+  "containers": [{ "id": 3, "name": "Copo", "volume": 250, "unit": "ml", "volume_ml": 250, "is_primary": true }],
+  "doses": [
+    { "medication_id": "m1", "schedule_id": "s1", "scheduled_for": "2026-10-24T08:00:00.000Z", "label": "Dipirona", "dose_amount": 500, "dose_unit": "mg", "done": true },
+    { "medication_id": "m2", "schedule_id": "s2", "scheduled_for": "2026-10-24T20:00:00.000Z", "label": "Vitamina D", "dose_amount": 1, "dose_unit": "cp", "done": false }
+  ],
+  "medications": [{ "id": "m3", "name": "Ibuprofeno", "dose_amount": 400, "dose_unit": "mg" }],
+  "cycle": { "phase": "luteal", "cycleDay": 21, "isLate": false },
+  "flowLevels": ["none", "spotting", "light", "medium", "heavy"],
+  "fasting": null,
+  "fastingPrefs": { "fasting_type": "16:8", "hours": 16 },
+  "symptoms": [{ "id": "y1", "name": "Dor de cabeça" }],
+  "foods": [{ "food_id": "f1", "name": "Arroz", "variant_id": "v1", "quantity": 100, "unit": "g" }],
+  "mealTypes": [{ "id": "b", "name": "Café" }]
+}

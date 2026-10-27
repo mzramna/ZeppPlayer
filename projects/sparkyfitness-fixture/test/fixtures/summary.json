@@ -1,0 +1,6 @@
+{ "goals": { "calories": 2000, "protein": 150, "carbs": 200, "fat": 70, "dietary_fiber": 30, "water_goal_ml": 2500 },
+  "foodEntries": [
+    { "quantity": 200, "serving_size": 100, "calories": 130, "protein": 2.5, "carbs": 28, "fat": 0.3, "dietary_fiber": 0.4 },
+    { "quantity": 1, "serving_size": 1, "calories": 90, "protein": 10, "carbs": null, "fat": 5, "dietary_fiber": null } ],
+  "exerciseSessions": [], "waterIntake": 750,
+  "calorieBalance": { "eaten": 350, "burned": 1800, "remaining": 1650, "goal": 2000, "net": -1450, "progress": 0.17, "bmr": 1600, "exerciseSource": "steps", "tdeeProjection": null } }

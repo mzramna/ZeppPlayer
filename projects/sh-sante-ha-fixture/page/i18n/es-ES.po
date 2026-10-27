@@ -1,0 +1,309 @@
+msgid "action_failed"
+msgstr "Acción fallida"
+
+msgid "alarm_code_required"
+msgstr "Requiere código: usa la app"
+
+msgid "areas"
+msgstr "Áreas"
+
+msgid "arm_away"
+msgstr "Armar fuera"
+
+msgid "arm_home"
+msgstr "Armar en casa"
+
+msgid "battery"
+msgstr "Batería"
+
+msgid "camera_disabled"
+msgstr "Las fotos de cámara están desactivadas en esta versión"
+
+msgid "camera_no_file"
+msgstr "No llegó ninguna imagen de Home Assistant"
+
+msgid "camera_refresh"
+msgstr "Actualizar"
+
+msgid "close"
+msgstr "Cerrar"
+
+msgid "current"
+msgstr "Actual"
+
+msgid "devices"
+msgstr "Dispositivos"
+
+msgid "disarm"
+msgstr "Desarmar"
+
+msgid "dock"
+msgstr "Base"
+
+msgid "done"
+msgstr "Hecho"
+
+msgid "effect"
+msgstr "Efecto"
+
+msgid "electricity"
+msgstr "Electricidad"
+
+msgid "energy"
+msgstr "Energía"
+
+msgid "entities"
+msgstr "entidades"
+
+msgid "error"
+msgstr "Algo salió mal"
+
+msgid "favorites"
+msgstr "Favoritos"
+
+msgid "gas"
+msgstr "Gas"
+
+msgid "loading"
+msgstr "Cargando..."
+
+msgid "locate"
+msgstr "Localizar"
+
+msgid "lock_action"
+msgstr "Bloquear"
+
+msgid "next"
+msgstr "Sig."
+
+msgid "no_areas"
+msgstr "Sin áreas"
+
+msgid "no_entities"
+msgstr "Sin entidades"
+
+msgid "open"
+msgstr "Abrir"
+
+msgid "oscillate"
+msgstr "Oscilar"
+
+msgid "pause"
+msgstr "Pausa"
+
+msgid "play"
+msgstr "Reproducir"
+
+msgid "power"
+msgstr "On/Off"
+
+msgid "prev"
+msgstr "Ant."
+
+msgid "saa_not_configured"
+msgstr "Define el servicio de notificación de Sleep as Android en los ajustes de la app del teléfono."
+
+msgid "scripts"
+msgstr "Scripts"
+
+msgid "sensors"
+msgstr "Sensores"
+
+msgid "sleep_as_android"
+msgstr "Sleep as Android"
+
+msgid "start"
+msgstr "Iniciar"
+
+msgid "start_tracking"
+msgstr "Iniciar seguimiento"
+
+msgid "state_armed_away"
+msgstr "Armada fuera"
+
+msgid "state_armed_home"
+msgstr "Armada en casa"
+
+msgid "state_arming"
+msgstr "Armando"
+
+msgid "state_auto"
+msgstr "Auto"
+
+msgid "state_cleaning"
+msgstr "Limpiando"
+
+msgid "state_closed"
+msgstr "Cerrado"
+
+msgid "state_closing"
+msgstr "Cerrando"
+
+msgid "state_cool"
+msgstr "Frío"
+
+msgid "state_disarmed"
+msgstr "Desarmada"
+
+msgid "state_disarming"
+msgstr "Desarmando"
+
+msgid "state_docked"
+msgstr "En la base"
+
+msgid "state_dry"
+msgstr "Secar"
+
+msgid "state_error"
+msgstr "Error"
+
+msgid "state_fan_only"
+msgstr "Ventilar"
+
+msgid "state_heat"
+msgstr "Calor"
+
+msgid "state_heat_cool"
+msgstr "Calor/frío"
+
+msgid "state_home"
+msgstr "En casa"
+
+msgid "state_idle"
+msgstr "Inactivo"
+
+msgid "state_jammed"
+msgstr "Atascado"
+
+msgid "state_locked"
+msgstr "Bloqueado"
+
+msgid "state_locking"
+msgstr "Bloqueando"
+
+msgid "state_not_home"
+msgstr "Fuera"
+
+msgid "state_off"
+msgstr "Apagado"
+
+msgid "state_on"
+msgstr "Encendido"
+
+msgid "state_open"
+msgstr "Abierto"
+
+msgid "state_opening"
+msgstr "Abriendo"
+
+msgid "state_paused"
+msgstr "Pausado"
+
+msgid "state_pending"
+msgstr "Pendiente"
+
+msgid "state_playing"
+msgstr "Reproduciendo"
+
+msgid "state_returning"
+msgstr "Regresando"
+
+msgid "state_triggered"
+msgstr "Disparada"
+
+msgid "state_unavailable"
+msgstr "No disponible"
+
+msgid "state_unknown"
+msgstr "Desconocido"
+
+msgid "state_unlocked"
+msgstr "Desbloqueado"
+
+msgid "state_unlocking"
+msgstr "Desbloqueando"
+
+msgid "stop"
+msgstr "Parar"
+
+msgid "stop_tracking"
+msgstr "Detener seguimiento"
+
+msgid "sync"
+msgstr "Sincronizar"
+
+msgid "sync_auto_off"
+msgstr "Sync automática: desactivada"
+
+msgid "sync_auto_on"
+msgstr "Sync automática: activa"
+
+msgid "sync_done"
+msgstr "Sincronizado"
+
+msgid "sync_error"
+msgstr "Error"
+
+msgid "sync_failed"
+msgstr "Error de sincronización"
+
+msgid "sync_failing_body"
+msgstr "3 sincronizaciones seguidas fallaron. Revisa la conexión con el teléfono."
+
+msgid "sync_failing_title"
+msgstr "Sincronización fallando"
+
+msgid "sync_last"
+msgstr "Última sincronización"
+
+msgid "sync_mode"
+msgstr "Modo"
+
+msgid "sync_mode_mobile_app"
+msgstr "App móvil"
+
+msgid "sync_mode_none"
+msgstr "Desactivado"
+
+msgid "sync_mode_rest"
+msgstr "REST"
+
+msgid "sync_mode_unknown"
+msgstr "Desconocido"
+
+msgid "sync_mode_zepp2hass"
+msgstr "zepp2hass"
+
+msgid "sync_never"
+msgstr "Nunca"
+
+msgid "sync_now"
+msgstr "Sincronizar ahora"
+
+msgid "sync_ok"
+msgstr "OK"
+
+msgid "sync_start"
+msgstr "Iniciar sync automática"
+
+msgid "sync_started"
+msgstr "Sync automática activa"
+
+msgid "sync_stop"
+msgstr "Detener sync automática"
+
+msgid "sync_stopped"
+msgstr "Sync automática desactivada"
+
+msgid "sync_title"
+msgstr "Sincronización"
+
+msgid "tap_again_to_confirm"
+msgstr "Toque otra vez"
+
+msgid "unlock_action"
+msgstr "Desbloquear"
+
+msgid "water"
+msgstr "Agua"
+

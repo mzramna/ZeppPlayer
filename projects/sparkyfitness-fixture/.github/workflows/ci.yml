@@ -1,0 +1,46 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancela execuções antigas do mesmo PR/branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      # testes, i18n estrito e cobertura mínima por arquivo (scripts/test.mjs)
+      - run: npm test
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Bundle check (imports e sintaxe)
+        run: npx esbuild app.js page/*.js app-side/index.js app-service/*.js setting/index.js --bundle --format=esm --outdir=/tmp/esb --external:@zos/* --log-level=warning
+      - run: npm i -g @zeppos/zeus-cli@1.9.3
+      - name: zeus build
+        env: { CI: '1' }
+        run: zeus build < /dev/null
+      - name: Pacote gerado
+        run: ls -la dist && test -n "$(find dist -name '*.zab' -print -quit)"
+      - name: Pacote inclui o Amazfit Balance
+        run: python3 -I scripts/check_zab.py dist/*.zab
+      - uses: actions/upload-artifact@v5
+        with:
+          name: sparkyfitness-zeppos-${{ github.sha }}
+          path: dist/*.zab
+          retention-days: 14
+          if-no-files-found: error

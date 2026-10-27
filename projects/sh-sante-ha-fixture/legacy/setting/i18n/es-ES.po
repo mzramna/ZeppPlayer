@@ -1,0 +1,59 @@
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Access"
+msgstr "Acceso a Home Assistant"
+
+msgid "IPLocal"
+msgstr "Dirección local de tu instancia de HA"
+
+msgid "IPExternal"
+msgstr "Dirección externa de tu instancia de HA"
+
+msgid "LongToken"
+msgstr "Token de larga duracion"
+
+msgid "FromProfile"
+msgstr "Créalo desde tu perfil de HA"
+
+msgid "UpdateSensor"
+msgstr "Actualizar sensores a HA cada hora (BETA)"
+
+msgid "WorksBetter"
+msgstr "Funciona mejor si desactivas todas las notificaciones"
+
+msgid "Entities"
+msgstr "Entidades"
+
+msgid "SearchEntities"
+msgstr "Busca las entidades que quieres controlar"
+
+msgid "SearchEntitiesEG"
+msgstr "Puedes buscar el ID de la entidad (e.g. light.bulb), el dominio (e.g. light), o dejarlo vacío para mostrar todas tus entidades controlables (media player, light, switch, input_boolean, script, automation y binary sensor)"
+
+msgid "Top"
+msgstr "Subir"
+
+msgid "Favorites"
+msgstr "Dispositivos favoritos (Acceso rápido)"
+
+msgid "Favorite"
+msgstr "Favorito"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "NoFavorites"
+msgstr "Aún no hay favoritos seleccionados. Marca ★ Favorito en cualquier entidad abajo para acceso rápido!"
+
+msgid "Prev"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "DarkMode"
+msgstr "Modo oscuro"

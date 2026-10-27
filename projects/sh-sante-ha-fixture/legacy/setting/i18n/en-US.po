@@ -1,0 +1,59 @@
+msgid "Search"
+msgstr "Search"
+
+msgid "Access"
+msgstr "Home Assistant Access"
+
+msgid "IPLocal"
+msgstr "Local HA instance address"
+
+msgid "IPExternal"
+msgstr "External HA instance address"
+
+msgid "LongToken"
+msgstr "Long access token"
+
+msgid "FromProfile"
+msgstr "Create it from your profile in HA"
+
+msgid "UpdateSensor"
+msgstr "Update sensor data to HA every hour (BETA)"
+
+msgid "WorksBetter"
+msgstr "It works better if you turn all notifications OFF"
+
+msgid "Entities"
+msgstr "Entities"
+
+msgid "SearchEntities"
+msgstr "Search for the entities you want to control"
+
+msgid "SearchEntitiesEG"
+msgstr "You can search for an entity id (e.g. light.bulb), a whole domain (e.g. light), or leave it empty to show all your controllable entities (media player, light, switch, input_boolean, script, automation and binary sensor entities are supported)"
+
+msgid "Top"
+msgstr "Top"
+
+msgid "Favorites"
+msgstr "Favorite Devices (Quick Access)"
+
+msgid "Favorite"
+msgstr "Favorite"
+
+msgid "Remove"
+msgstr "Remove"
+
+msgid "NoFavorites"
+msgstr "No favorites selected yet. Star any entity below to add it to quick access!"
+
+msgid "Prev"
+msgstr "Prev"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "DarkMode"
+msgstr "Dark mode"

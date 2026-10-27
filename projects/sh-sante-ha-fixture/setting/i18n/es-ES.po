@@ -1,0 +1,181 @@
+msgid "Access"
+msgstr "Acceso a Home Assistant"
+
+msgid "IPLocal"
+msgstr "Dirección local de tu instancia de HA"
+
+msgid "IPExternal"
+msgstr "Dirección externa de tu instancia de HA"
+
+msgid "LongToken"
+msgstr "Token de larga duracion"
+
+msgid "FromProfile"
+msgstr "Créalo desde tu perfil de HA"
+
+msgid "Entities"
+msgstr "Entidades"
+
+msgid "SearchEntities"
+msgstr "Busca las entidades que quieres en el reloj"
+
+msgid "Top"
+msgstr "Subir"
+
+msgid "Favorite"
+msgstr "Favorita"
+
+msgid "Filter"
+msgstr "Filtro"
+
+msgid "Refresh entities"
+msgstr "Actualizar entidades"
+
+msgid "Loads your entities from Home Assistant. Your choices are kept."
+msgstr "Carga tus entidades de Home Assistant. Tus elecciones se mantienen."
+
+msgid "Tap Refresh entities to load them from Home Assistant."
+msgstr "Toca Actualizar entidades para cargarlas desde Home Assistant."
+
+msgid "No entity matches the filter."
+msgstr "Ninguna entidad coincide con el filtro."
+
+msgid "Health data sync"
+msgstr "Sincronización de datos de salud"
+
+msgid "Send health data to"
+msgstr "Enviar datos de salud a"
+
+msgid "Off"
+msgstr "Desactivado"
+
+msgid "zepp2hass"
+msgstr "zepp2hass"
+
+msgid "Mobile app"
+msgstr "App móvil"
+
+msgid "REST API"
+msgstr "API REST"
+
+msgid "Sync every"
+msgstr "Sincronizar cada"
+
+msgid "zepp2hass webhook URL"
+msgstr "URL del webhook de zepp2hass"
+
+msgid "Must start with http:// or https://"
+msgstr "Debe empezar por http:// o https://"
+
+msgid "Register in Home Assistant"
+msgstr "Registrar en Home Assistant"
+
+msgid "Registered in Home Assistant"
+msgstr "Registrado en Home Assistant"
+
+msgid "Not registered yet"
+msgstr "Aún no registrado"
+
+msgid "No sync yet"
+msgstr "Aún no hay sincronización"
+
+msgid "Last sync"
+msgstr "Última sincronización"
+
+msgid "Last sync failed"
+msgstr "La última sincronización falló"
+
+msgid "Sleep as Android"
+msgstr "Sleep as Android"
+
+msgid "Needs the Home Assistant Companion app on the phone and the sleep_as_android integration."
+msgstr "Necesita la app Home Assistant Companion en el teléfono y la integración sleep_as_android."
+
+msgid "Notify service"
+msgstr "Servicio de notificación"
+
+msgid "Letters, digits and _ only, e.g. mobile_app_pixel_8"
+msgstr "Solo letras, números y _, p. ej. mobile_app_pixel_8"
+
+msgid "Status entity"
+msgstr "Entidad de estado"
+
+msgid "Entity id like sensor.sleep_as_android, or empty"
+msgstr "ID de entidad como sensor.sleep_as_android, o vacío"
+
+msgid "Favorites"
+msgstr "Dispositivos favoritos (Acceso rápido)"
+
+msgid "QuickAccessHint"
+msgstr "Dispositivos mostrados directamente en la pantalla inicial del reloj para control rápido."
+
+msgid "NoFavoritesHint"
+msgstr "Marque ★ Favorita en las entidades abajo para fijarlas en el acceso rápido."
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Show only favorites"
+msgstr "Mostrar solo favoritos"
+
+msgid "Prev"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "Theme"
+msgstr "Tema de interfaz"
+
+msgid "Dark"
+msgstr "Oscuro"
+
+msgid "Light"
+msgstr "Claro"
+
+msgid "Areas"
+msgstr "Habitaciones / Áreas"
+
+msgid "Energy"
+msgstr "Consumo & Energía"
+
+msgid "Interactive"
+msgstr "Interactivos"
+
+msgid "Sensors"
+msgstr "Sensores"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "Filter type"
+msgstr "Tipo de filtro"
+
+msgid "Electricity"
+msgstr "Electricidad"
+
+msgid "Water"
+msgstr "Agua"
+
+msgid "Gas"
+msgstr "Gas"
+
+msgid "Other"
+msgstr "Otros"
+
+msgid "No areas found. Tap Refresh entities to load them."
+msgstr "No se encontraron áreas. Toca Actualizar entidades para cargarlas."
+
+msgid "No energy sensors found. Tap Refresh entities to load them."
+msgstr "No se encontraron sensores de energía. Toca Actualizar entidades para cargarlos."
+
+msgid "No Area"
+msgstr "Sin área"
+
+msgid "Grouped by area from Home Assistant"
+msgstr "Agrupados por área de Home Assistant con control de visibilidad."
+
+msgid "Energy and resource sensors"
+msgstr "Sensores de electricidad, agua, gas y consumo con visibilidad en el reloj."
+
+

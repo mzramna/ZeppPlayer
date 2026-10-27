@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2020",
+    "checkJs": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "lib": [
+      "es2020"
+    ],
+    "skipLibCheck": true,
+    "maxNodeModuleJsDepth": 0
+  },
+  "include": [
+    "app.js",
+    "app-side",
+    "app-service",
+    "page",
+    "setting",
+    "shared",
+    "utils",
+    "config",
+    "global.d.ts",
+    "types"
+  ],
+  "exclude": [
+    "node_modules",
+    "legacy",
+    "build",
+    "dist"
+  ]
+}
